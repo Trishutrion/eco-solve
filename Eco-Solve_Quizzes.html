@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Quizzes</title>
+<style> 
+  .scrollable-menu {
+  overflow: auto;
+  white-space: nowrap;
+}
+.scrollable-menu a {
+  display: inline-block;
+  padding: 10px;
+  text-decoration: none;
+}
+  .rectangle {
+  width: window; 
+  height: 100px; 
+}
+</style> 
+</head>
+
+<body>
+  <!-- Heading of the webpage  (aligned to the centre of the page)-->
+  <h1> 
+    <center> 
+      Quizzes
+    </center> 
+  </h1>
+  <!-- Scrollable Menu  --> 
+  <div class="scrollable-menu">
+    <div style="width:width;height:height;background-color:lightgrey;">
+      <center>  
+        <a href="Eco-Solve_Homepage.html">Home</a>
+        <a href="Eco-Solve_Videos.html">Videos</a>
+        <a href="Eco-Solve_Quizzes.html">Quizzes</a>
+        <a href="Eco-Solve_Game.html">Game</a>
+        <a href="Eco-Solve_Personal-Tracker.html">Personal Tracker</a>
+        <a href="Eco-Solve_Contacts.html">Contacts</a>
+      </center>
+    </div>
+  </div>
+  <h1>
+    Welcome to the quizzes!
+    Just click on a button and wait for the quiz questions to display! 
+  </h1>
+  <br>
+  <h2>
+    Quiz List
+  </h2>
+  <ol> 
+    <li>Quiz 1: The Greenhouse Effect</li>
+    <button id="button1">Click here!</button>
+    <div id="quiz1Questions"></div>
+    <script>
+      // Function to be called when the button is clicked
+      function handleClick1() {
+        console.log("Button clicked!");
+        // Display quiz questions beneath the button
+        const quiz1Questions = document.getElementById("quiz1Questions");
+        quiz1Questions.innerHTML = `
+          <h3>Quiz 1: The Greenhouse Effect</h3>
+          <p>Welcome to Quiz 1: The Greenhouse Effect!</p>
+          <p>With diverse and challenging questions, it will be your favorite quiz app!</p>
+          <p>You get ONLY ONE attempt per question, so answer carefully.</p>
+          <p>To exit the quiz midway, press the "Cancel" button.</p>
+          <p>Enjoy!</p>
+          <p>You will be asked five questions, some of which will be multiple choice questions, and some of which will be short-answer questions.</p>
+          <ol>
+            <li>What is the greenhouse effect caused by?</li>
+            <input type="text" id="answer1">
+            <button onclick="checkAnswer1()">Submit Answer</button>
+            <p id="answer1Result"></p>
+          </ol>
+        `;
+      }
+
+      // Function to check answer for question 1
+      function checkAnswer1() {
+        const answer1 = document.getElementById("answer1").value.trim().toLowerCase();
+        const answer1Result = document.getElementById("answer1Result");
+        if (answer1 === 'greenhouse gases') {
+          answer1Result.textContent = "Congratulations! You are correct!";
+        } else {
+          answer1Result.textContent = "Oops! You are incorrect! (Correct answer: greenhouse gases)";
+        }
+      }
+
+      // Get the button element using its ID
+      const button1 = document.getElementById("button1");
+      // Attach the event listener to the button
+      button1.addEventListener("click", handleClick1);
+    </script>
+    </li>
+
+    <li>Quiz 2: Natural Disasters</li>
+    <button id="button2">Click here!</button>
+    <div id="quiz2Questions"></div>
+    <script>
+      // Function to be called when the button is clicked
+      function handleClick2() {
+        console.log("Button clicked!");
+        // Display quiz questions beneath the button
+        const quiz2Questions = document.getElementById("quiz2Questions");
+        quiz2Questions.innerHTML = `
+          <h3>Quiz 2: Natural Disasters</h3>
+          <p>Welcome to Quiz 2: Natural Disasters!</p>
+          <p>With diverse and challenging questions, it will be your favorite quiz app!</p>
+          <p>You get ONLY ONE attempt per question, so answer carefully.</p>
+          <p>To exit the quiz midway, press the "Cancel" button.</p>
+          <p>Enjoy!</p>
+          <p>You will be asked five questions, some of which will be multiple choice questions, and some of which will be short-answer questions.</p>
+          <ol>
+            <li>Which type of natural disasters are caused by disruptions on the surface of the Earth?</li>
+            <input type="text" id="answer2">
+            <button onclick="checkAnswer2()">Submit Answer</button>
+            <p id="answer2Result"></p>
+          </ol>
+        `;
+      }
+
+      // Function to check answer for question 2
+      function checkAnswer2() {
+        const answer2 = document.getElementById("answer2").value.trim().toLowerCase();
+        const answer2Result = document.getElementById("answer2Result");
+        if (answer2 === 'geophysical') {
+          answer2Result.textContent = "Congratulations! You are correct!";
+        } else {
+          answer2Result.textContent = "Oops! You are incorrect! (Correct answer: geophysical)";
+        }
+      }
+
+      // Get the button element using its ID
+      const button2 = document.getElementById("button2");
+      // Attach the event listener to the button
+      button2.addEventListener("click", handleClick2);
+    </script>
+    </li>
+
+    <li>Quiz 3: The United Nations Sustainable Development Goals</li>
+    <button id="button3">Click here!</button>
+    <div id="quiz3Questions"></div>
+    <script>
+      // Function to be called when the button is clicked
+      function handleClick3() {
+        console.log("Button clicked!");
+        // Display quiz questions beneath the button
+        const quiz3Questions = document.getElementById("quiz3Questions");
+        quiz3Questions.innerHTML = `
+          <h3>Quiz 3: The United Nations Sustainable Development Goals</h3>
+          <p>Welcome to Quiz 3: The United Nations Sustainable Development Goals!</p>
+          <p>With diverse and challenging questions, it will be your favorite quiz app!</p>
+          <p>You get ONLY ONE attempt per question, so answer carefully.</p>
+          <p>To exit the quiz midway, press the "Cancel" button.</p>
+          <p>Enjoy!</p>
+          <p>You will be asked four questions, some of which will be multiple choice questions, and some of which will be short-answer questions.</p>
+          <ol>
+            <li>What is the first goal of the UN SDGs (United Nations Sustainable Development Goals)?</li>
+            <input type="text" id="answer3">
+            <button onclick="checkAnswer3()">Submit Answer</button>
+            <p id="answer3Result"></p>
+          </ol>
+        `;
+      }
+
+      // Function to check answer for question 3
+      function checkAnswer3() {
+        const answer3 = document.getElementById("answer3").value.trim().toLowerCase();
+        const answer3Result = document.getElementById("answer3Result");
+        if (answer3 === 'no poverty') {
+          answer3Result.textContent = "Congratulations! You are correct!";
+        } else {
+          answer3Result.textContent = "Oops! You are incorrect! (Correct answer: no poverty)";
+        }
+      }
+
+      // Get the button element using its ID
+      const button3 = document.getElementById("button3");
+      // Attach the event listener to the button
+      button3.addEventListener("click", handleClick3);
+    </script>
+    </li>
+  </ol>
+</body>
+</html>
