@@ -1,47 +1,47 @@
-    // Constants
-    const canvas = document.getElementById('gameCanvas');
-    const ctx = canvas.getContext('2d');
-    const playerWidth = 50;
-    const playerHeight = 80;
-    const enemyMinRadius = 5;
-    const enemyMaxRadius = 30;
-    const enemySpeed = 5;
+// Constants
+const canvas = document.getElementById('gameCanvas');
+const ctx = canvas.getContext('2d');
+const playerWidth = 50;
+const playerHeight = 80;
+const enemyMinRadius = 5;
+const enemyMaxRadius = 30;
+const enemySpeed = 5;
 
-    // Game variables
-    let playerX = canvas.width / 2 - playerWidth / 2;
-    let playerY = canvas.height - playerHeight - 20;
-    let hp = 50;
-    let isGameOver = false;
-    let startTime = null;
-    let elapsedTime = 0;
-    let highScore = localStorage.getItem('highScore') || 0;
+// Game variables
+let playerX = canvas.width / 2 - playerWidth / 2;
+let playerY = canvas.height - playerHeight - 20;
+let hp = 50;
+let isGameOver = false;
+let startTime = null;
+let elapsedTime = 0;
+let highScore = localStorage.getItem('highScore') || 0;
 
-    // Helper function to generate random enemy Radius
-    function getRandomenemyRadius() {
-        return Math.floor(Math.random() * (enemyMaxRadius - enemyMinRadius)) *2;
-    }
+// Helper function to generate random enemy Radius
+function getRandomenemyRadius() {
+    return Math.floor(Math.random() * (enemyMaxRadius - enemyMinRadius)) *2;
+}
 
-    // Helper function to check collision between two rectangles
-    function checkCollision(rect1, rect2) {
-        return rect1.x < rect2.x + rect2.width &&
-                rect1.x + rect1.width > rect2.x &&
-                rect1.y < rect2.y + rect2.height &&
-                rect1.y + rect1.height > rect2.y;
-    }
+// Helper function to check collision between two rectangles
+function checkCollision(rect1, rect2) {
+    return rect1.x < rect2.x + rect2.width &&
+            rect1.x + rect1.width > rect2.x &&
+            rect1.y < rect2.y + rect2.height &&
+            rect1.y + rect1.height > rect2.y;
+}
 
-    // Game loop
-    function gameLoop(timestamp) {
-        if (!isGameOver) {
-            // Calculate elapsed time
-            if (!startTime) {
-                startTime = timestamp;
-            }
-            elapsedTime = Math.floor((timestamp - startTime) / 1000);
+// Game loop
+function gameLoop(timestamp) {
+    if (!isGameOver) {
+        // Calculate elapsed time
+        if (!startTime) {
+            startTime = timestamp;
+        }
+        elapsedTime = Math.floor((timestamp - startTime) / 1000);
 
-            // Clear the canvas
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
+        // Clear the canvas
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-            //Draw the ground 
+        //Draw the ground 
             ctx.fillStyle = '#355e3b';
             ctx.fillRect(canvas.width-800, canvas.height-20, canvas.width, 20);
 
