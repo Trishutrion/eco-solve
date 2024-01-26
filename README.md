@@ -1,4 +1,4 @@
-**Important Information Regarding Eco-Solve**_
+**Important Information Regarding Eco-Solve**
 
 Calling all environmentalists!
 Eco-Solve is an environmental education website where users can learn more about the environment, current environmental issues, and make more sustainable choices. 
