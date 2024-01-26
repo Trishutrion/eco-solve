@@ -41,11 +41,43 @@
     </div>
   </div>
 
- <!-- Caption  -->
-  <h2>
-    <center>
-      Coming soon!
-    </center>
-  </h2>
+ <form id="sustainabilityForm">
+    <label for="electricity">Electricity Usage (kWh):</label>
+    <input type="number" id="electricity" required><br>
+
+    <label for="water">Water Usage (liters):</label>
+    <input type="number" id="water" required><br>
+
+    <label for="waste">Waste Production (kg):</label>
+    <input type="number" id="waste" required><br>
+
+    <button type="button" onclick="calculateSustainability()">Calculate Sustainability Score</button>
+</form>
+
+<p id="result"></p>
+
+<script>
+    function calculateSustainability() {
+        // Get input values
+        var electricity = parseFloat(document.getElementById("electricity").value);
+        var water = parseFloat(document.getElementById("water").value);
+        var waste = parseFloat(document.getElementById("waste").value);
+
+        // Calculate sustainability score (you can adjust the formula based on your criteria)
+        var sustainabilityScore = (100 - electricity) + (50 - water) - (2 * waste);
+
+        // Display the result
+        var resultElement = document.getElementById("result");
+        resultElement.textContent = "Your Sustainability Score: " + sustainabilityScore;
+
+        // Save metrics and sustainability score to a text file
+        var dataToSave = "Electricity: " + electricity + " kWh\nWater: " + water + " liters\nWaste: " + waste + " kg\nSustainability Score: " + sustainabilityScore;
+        var blob = new Blob([dataToSave], { type: 'text/plain' });
+        var link = document.createElement("a");
+        link.href = window.URL.createObjectURL(blob);
+        link.download = "sustainability_metrics.txt";
+        link.click();
+    }
+</script>
 
 
