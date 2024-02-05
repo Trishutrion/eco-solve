@@ -41,16 +41,16 @@ function checkCollision(rect1, rect2) {
 }
 
 function gameLoop(timestamp) {
-    eventHandling();
-    if (elapsedTime >= highScore){
-        highScore = elapsedTime
-    }
+    eventHandling();    
     if (!isGameOver) {
-    // Calculate elapsed time
-    if (!startTime) {
-        startTime = timestamp;
-    }
-    elapsedTime = Math.floor((timestamp - startTime) / 1000);
+        if (!startTime) {
+            startTime = timestamp;
+        }
+        elapsedTime = Math.floor((timestamp - startTime) / 1000);
+    
+        if (elapsedTime >== highScore){
+        highScore = elapsedTime;
+    };
 
     // Clear the canvas
     ctx.clearRect(0, 0, canvas.width, canvas.height);
