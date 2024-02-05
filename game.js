@@ -42,6 +42,9 @@ function checkCollision(rect1, rect2) {
 
 function gameLoop(timestamp) {
     eventHandling();
+    if (elapsedTime >= highScore){
+        highScore = elapsedTime
+    }
     if (!isGameOver) {
     // Calculate elapsed time
     if (!startTime) {
