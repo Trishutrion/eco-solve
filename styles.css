@@ -1,0 +1,13 @@
+.scrollable-menu {
+    overflow: auto;
+    white-space: nowrap;
+}
+.scrollable-menu a {
+    display: inline-block;
+    padding: 10px;
+    text-decoration: none;
+}
+.rectangle {
+    width: window;
+    height: 100px;
+}
