@@ -1,6 +1,9 @@
 .scrollable-menu {
     overflow: auto;
     white-space: nowrap;
+    width: window;
+    height: 5%;
+    background-color: lightgrey;
 }
 .scrollable-menu a {
     display: inline-block;
