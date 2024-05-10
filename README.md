@@ -23,7 +23,7 @@ How long can you survive??? <br>
 
 Personal Tracker <br>
 Using the personal tracker feature of Eco-Solve, you can set your own sustainability goals and reduce your negative impact on the environment. <br>
-We value privacy at Eco-Solve, so your data is stored in a .json file, so it is not on any cloud or system. <br>
+We value privacy at Eco-Solve, so your data is stored in a .txt file, so it is not on any cloud or system. <br>
 
 Contacts
 For finding out more information and visiting further sites, or for suggesting improvements to Eco-Solve, <br>

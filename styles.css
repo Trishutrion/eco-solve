@@ -1,4 +1,7 @@
 .scrollable-menu {
+    width:window; 
+    height:40px ;
+    background-color:lightgrey;
     overflow: auto;
     white-space: nowrap;
     width: window;
