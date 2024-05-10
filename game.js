@@ -1,74 +1,53 @@
-/*
-Mini-Game: Hailstone Dodger
-By: Arnav Bagal
-
-In this game, you are a person trying to dodge hailstones. 
-You can use the arrow keys or the 'a' and 'd' keys to move, 
-but you are unable to leave the game scree.
-
-How long can you survive?
-*/
-
 // Constants
 const canvas = document.getElementById('gameCanvas');
 const ctx = canvas.getContext('2d');
-const personWidth = 50;
-const personHeight = 80;
-const hailstoneMinRadius = 5;
-const hailstoneMaxRadius = 30;
-const hailstoneSpeed = 5;
+const tankWidth = 50;
+const tankHeight = 80;
+const particleRadius = 10;
+const particleSpeed = 5;
 
 // Game variables
-let personX = canvas.width / 2 - personWidth / 2;
-let personY = canvas.height - personHeight - 20;
-let HP = 50;
-let isGameOver = false;
+let tankX = canvas.width / 2 - tankWidth / 2;
+let tankY = canvas.height - tankHeight - 20;
+let particlesCollected = 0;
+let gameOver = false;
 let startTime = null;
 let elapsedTime = 0;
-let highScore = localStorage.getItem('highScore') || 0;
-
-// Helper function to generate random hailstone Radius
-function getRandomhailstoneRadius() {
-    return Math.floor(Math.random() * (hailstoneMaxRadius - hailstoneMinRadius)) *2;
-}
-
-// Helper function to check collision between two rectangles
-function checkCollision(rect1, rect2) {
-    return rect1.x < rect2.x + rect2.width &&
-            rect1.x + rect1.width > rect2.x &&
-            rect1.y < rect2.y + rect2.height &&
-            rect1.y + rect1.height > rect2.y;
-}
+let mostParticlesCollected = localStorage.getItem('mostParticlesCollected') || 0;
+let particleX = Math.random() * (canvas.width - particleRadius);
+let particleY = -particleRadius;
 
 function gameLoop(timestamp) {
-    //Event handling
+    while (!gameOver) {
+        
+    }
+}
+    /*
+    Commented Code:
+        // Event handling: checks for key presses and moves tank accordingly
     document.addEventListener('keydown', function(event) {
-        if (!isGameOver) {
-            if (event.key === 'ArrowLeft') {
-                personX -= 10;
-            } 
-            else if (event.key === 'a') {
-                personX -= 10;
-            } 
-            else if (event.key === 'ArrowRight') {
-                personX += 10;
-            } 
-            else if (event.key === 'd') {
-                personX += 10;
-            }
-        } 
-        else if (event.key === ' ' && isGameOver) { 
+        if (!gameOver) {
+            if (event.key === 'ArrowLeft' || event.key === 'a') {
+                tankX -= 10;
+            } else if (event.key === 'ArrowRight' || event.key === 'd') {
+                tankX += 10;
+            }; 
+        } else if (event.key === ' ' && gameOver) { 
             restart();
         }
     });
-    if (!isGameOver) {
+    if (!gameOver) {
         if (!startTime) {
             startTime = timestamp;
         }
         elapsedTime = Math.floor((timestamp - startTime) / 1000);
+        if (elapsedTime > 60) {
+            gameOver = true; 
+            
+        }
     
-        if (elapsedTime >= highScore){
-        highScore = elapsedTime;
+        if (elapsedTime >= mostParticlesCollected){
+        mostParticlesCollected = elapsedTime;
     };
 
     // Clear the canvas
@@ -78,85 +57,72 @@ function gameLoop(timestamp) {
     ctx.fillStyle = '#355e3b';
     ctx.fillRect(canvas.width-800, canvas.height-20, canvas.width, 20);
 
-    // Draw the person
+    // Draw the tank
     ctx.fillStyle = '#007bff';
-    ctx.fillRect(personX, personY, personWidth, personHeight);
+    ctx.fillRect(tankX, tankY, tankWidth, tankHeight);
 
-    // Move the hailstone
-    hailstoneY += hailstoneSpeed;
+    // Move the particle
+    particleY += particleSpeed;
 
-    // Ensure the person stays within the screen boundaries
-    if (personX < 0) {
-        personX = 0;
-    } else if (personX + personWidth > canvas.width) {
-        personX = canvas.width - personWidth;
+    // Ensure the tank stays within the screen boundaries
+    if (tankX < 0) {
+        tankX = 0;
+    } else if (tankX + tankWidth > canvas.width) {
+        tankX = canvas.width - tankWidth;
     }
 
-    // Check if hailstone hits the person
-    if (checkCollision({ x: personX, y: personY, width: personWidth, height: personHeight },
-                        { x: hailstoneX, y: hailstoneY, width: hailstoneRadius, height: hailstoneRadius })) {
-        const damage = hailstoneRadius; // Damage is proportional to hailstone Radius
-        HP -= damage;
-        if (HP <= 0) {
-            isGameOver = true;
-            if (elapsedTime > highScore) {
-                highScore = elapsedTime;
-                localStorage.setItem('highScore', highScore);
+    // Check if particle hits the tank
+    if (tankX < particleX + particleRadius && tankX + particleRadius > particleX && tankY < particleY + particleRadius && tankY + particleRadius > particleY) {
+        const damage = particleRadius; 
+        particlesCollected -= damage;
+            
+            if (particlesCollected > mostParticlesCollected) {
+                mostParticlesCollected = particlesCollected;
+                localStorage.setItem('mostParticlesCollected', mostParticlesCollected);
             }
         }
-        hailstoneY = -hailstoneRadius;
-        hailstoneX = Math.random() * (canvas.width - hailstoneRadius);
-        hailstoneRadius = getRandomhailstoneRadius();
     }
 
-    // Respawn hailstone when it touches the ground
-    if (hailstoneY >= canvas.height-20) {
-        hailstoneY = -hailstoneRadius;
-        hailstoneX = Math.random() * (canvas.width - hailstoneRadius);
-        hailstoneRadius = getRandomhailstoneRadius();
-    }
+                particleY = -particleRadius;
+                particleX = Math.random() * (canvas.width - particleRadius);
+                particleRadius = Math.floor(Math.random() * (particleMaxRadius - particleMinRadius)) *2;
 
-    // Draw the hailstone
-    ctx.fillStyle = '#cccccc';
-    ctx.beginPath();
-    ctx.arc(hailstoneX, hailstoneY, hailstoneRadius, 0, Math.PI * 2);
-    ctx.fill();
+            // Respawn particle when it touches the ground
+            if (particleY >= canvas.height-20) {
+                particleY = -particleRadius;
+                particleX = Math.random() * (canvas.width - particleRadius);
+                particleRadius = Math.floor(Math.random() * (particleMaxRadius - particleMinRadius)) *2;
+            }
 
-    // Draw HP
-    ctx.font = '20px Arial';
-    ctx.fillStyle = '#ff0000';
-    ctx.fillText(`HP: ${HP}`, 10, 40);
+            // Draw the particle
+            ctx.fillStyle = '#cccccc';
+            ctx.beginPath();
+            ctx.arc(particleX, particleY, particleRadius, 0, Math.PI * 2);
+            ctx.fill();
 
-    // Draw elapsed time and high score
-    ctx.fillStyle = '#000000';
-    ctx.fillText(`Time: ${elapsedTime} seconds`, 10, 70);
-    ctx.fillText(`High Score: ${highScore} seconds`, 10, 100);
+            // Draw particlesCollected
+            ctx.font = '20px Arial';
+            ctx.fillStyle = '#ff0000';
+            ctx.fillText(`particlesCollected: ${particlesCollected}`, 10, 40);
 
-    requestAnimationFrame(gameLoop);
-    } 
-    else {
-        // Game over, display restart message
-        ctx.font = '30px Arial';
-        ctx.fillStyle = '#ff0000';
-        ctx.fillText('Game Over! Press Space to Restart', 200, 200);
-    }
-}
+            // Draw elapsed time and high score
+            ctx.fillStyle = '#000000';
+            ctx.fillText(`Time left: ${60 - elapsedTime} seconds`, 10, 70);
+            ctx.fillText(`Most particles collected: ${mostParticlesCollected} seconds`, 10, 100);
 
-function restart(){
-    HP = 50;
-    isGameOver = false;
-    startTime = null;
-    elapsedTime = 0;
-    personX = canvas.width / 2 - personWidth / 2;
-    personY = canvas.height - personHeight - 20;
-    hailstoneX = Math.random() * (canvas.width - hailstoneRadius);
-    hailstoneY = -hailstoneRadius;
-    hailstoneRadius = getRandomhailstoneRadius();
-    gameLoop();
-};
+            requestAnimationFrame(gameLoop);
+        else {
+            // Game over, display restart message
+            ctx.font = '30px Arial';
+            ctx.fillStyle = '#ff0000';
+            ctx.fillText('Game Over! Press Space to Restart', 200, 200);
+        }
+
+        }
+    };    
+    */
+    
+
 
 // Initial setup
-let hailstoneRadius = getRandomhailstoneRadius();
-let hailstoneX = Math.random() * (canvas.width - hailstoneRadius);
-let hailstoneY = -hailstoneRadius;
-gameLoop();
+gameLoop(); 
