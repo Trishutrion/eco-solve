@@ -40,6 +40,7 @@
       </center>
     </div>
   </div>
+  <h2></h2>
 
  <form id="sustainabilityForm">
     <label for="electricity">Electricity Usage (kWh):</label>
@@ -63,7 +64,7 @@
         var water = parseFloat(document.getElementById("water").value);
         var waste = parseFloat(document.getElementById("waste").value);
 
-        // Calculate sustainability score (you can adjust the formula based on your criteria)
+        // Calculate sustainability score
         var sustainabilityScore = (100 - electricity) + (50 - water) - (2 * waste);
 
         // Display the result
