@@ -16,28 +16,42 @@
   <div class="scrollable-menu">
     <div style="width:width;height:height;background-color:lightgrey;">
       <center>  
-        <a href="index.html">Home</a>
-          <a href="video.html">Videos</a>
-          <a href="quiz.html">Quizzes</a>
-          <a href="game.html">Game</a>
-          <a href="tracker.html">Personal Tracker</a>
-          <a href="contacts.html">Contacts</a>
+        <link href="menu.html"; rel="import">
       </center>
     </div>
   </div>
   <h1>
     Welcome to the quizzes!
-    Just click on a button and wait for the quiz questions to display! 
+    Just click on a button and enjoy! 
   </h1>
   <br>
-  <h2>
-    Quiz List
-  </h2>
   <ol> 
+
+    <l1>Quiz 1: Recap of Echoes of Humanity</l1>
+    <button id="button1">
+      Click here!
+    </button>
+
+
     <li>Quiz 1: The Greenhouse Effect</li>
     <button id="button1">Click here!</button>
     <div id="quiz1Questions"></div>
     <script>
+      //List of all the questions and answers in Javascript
+      const questionsAndAnswers = {
+        quiz1: {
+          questions: {
+            1: "What are the gases that contribute to the greenhouse effect called?",
+            2: "True or false: Infrared radiation is emitted from the Sun.",
+            3: `Which of the following gases is NOT a greenhouse gas? 
+(A) Carbon dioxide
+(B) Methane
+(C) Sulfur dioxide
+(D) Water vapour`,
+            4: "How are you today? "            
+          } 
+        }
+      }; 
       // Function to be called when the button is clicked
       function handleClick1() {
         console.log("Button clicked!");
@@ -45,12 +59,19 @@
         const quiz1Questions = document.getElementById("quiz1Questions");
         quiz1Questions.innerHTML = `
           <h3>Quiz 1: The Greenhouse Effect</h3>
-          <p>Welcome to Quiz 1: The Greenhouse Effect!</p>
-          <p>With diverse and challenging questions, it will be your favorite quiz app!</p>
-          <p>You get ONLY ONE attempt per question, so answer carefully.</p>
-          <p>To exit the quiz midway, press the "Cancel" button.</p>
-          <p>Enjoy!</p>
-          <p>You will be asked five questions, some of which will be multiple choice questions, and some of which will be short-answer questions.</p>
+          <p>
+            Welcome to Quiz 1: The Greenhouse Effect! <br>
+            With diverse and challenging questions, it will be your favorite quiz app! <br>
+            You get ONLY ONE attempt per question, so answer carefully. <br>
+            To exit the quiz midway, refresh the page. <br>
+            Enjoy! <br>
+            <br>
+            You will be asked five questions, 
+            some of which will be multiple choice questions, 
+            and some of which will be short-answer questions. <br>
+            
+
+          </p>
           <ol>
             <li>What is the greenhouse effect caused by?</li>
             <input type="text" id="answer1">
