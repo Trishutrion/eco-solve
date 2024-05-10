@@ -48,7 +48,7 @@ function gameLoop(timestamp) {
         }
         elapsedTime = Math.floor((timestamp - startTime) / 1000);
     
-        if (elapsedTime >== highScore){
+        if (elapsedTime >= highScore){
         highScore = elapsedTime;
     };
 
