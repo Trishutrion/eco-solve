@@ -41,7 +41,26 @@ function checkCollision(rect1, rect2) {
 }
 
 function gameLoop(timestamp) {
-    eventHandling();    
+    //Event handling
+    document.addEventListener('keydown', function(event) {
+        if (!isGameOver) {
+            if (event.key === 'ArrowLeft') {
+                personX -= 10;
+            } 
+            else if (event.key === 'a') {
+                personX -= 10;
+            } 
+            else if (event.key === 'ArrowRight') {
+                personX += 10;
+            } 
+            else if (event.key === 'd') {
+                personX += 10;
+            }
+        } 
+        else if (event.key === ' ' && isGameOver) { 
+            restart();
+        }
+    });
     if (!isGameOver) {
         if (!startTime) {
             startTime = timestamp;
@@ -134,29 +153,6 @@ function restart(){
     hailstoneY = -hailstoneRadius;
     hailstoneRadius = getRandomhailstoneRadius();
     gameLoop();
-};
-
-function eventHandling(){
-    document.addEventListener('keydown', function(event) {
-        if (!isGameOver) {
-            if (event.key === 'ArrowLeft') {
-                personX -= 10;
-            } 
-            else if (event.key === 'a') {
-                personX -= 10;
-            } 
-            else if (event.key === 'ArrowRight') {
-                personX += 10;
-            } 
-            else if (event.key === 'd') {
-                personX += 10;
-            }
-        } 
-        else if (event.key === ' ' && isGameOver) {
-            // Restart the game if space is pressed
-            restart();
-        }
-    });
 };
 
 // Initial setup
