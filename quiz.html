@@ -1,196 +1,241 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>Quizzes</title>
-  <link rel="stylesheet"; href="styles.css">
-</head>
-
-<body>
-  <!-- Heading of the webpage  (aligned to the centre of the page)-->
-  <h1> 
-    <center> 
-      Quizzes
-    </center> 
-  </h1>
-  <!-- Scrollable Menu  --> 
-  <div class="scrollable-menu">
-    <div style="width:window; height:40px ;background-color:lightgrey;">
-      <center>  
+  <head>
+    <title>Quizzes</title>
+    <link rel="stylesheet"; href="styles.css">
+  </head>
+  <body>
+    <center>
+      <h1>Quizzes</h1>
+      <div class="scrollable-menu">
         <a href="index.html">Home</a>
         <a href="video.html">Videos</a>
         <a href="quiz.html">Quizzes</a>
         <a href="game.html">Game</a>
         <a href="tracker.html">Personal Tracker</a>
         <a href="contacts.html">Contacts</a>
-      </center>
-    </div>
-  </div>
-  <h1>
-    Welcome to the quizzes!
-    Just click on a button and enjoy! 
-  </h1>
-  <br>
-  <ol> 
-
-    <l1>Quiz 1: Recap of Echoes of Humanity</l1>
-    <button id="button1">
-      Click here!
-    </button>
-
-
-    <li>Quiz 1: The Greenhouse Effect</li>
-    <button id="button1">Click here!</button>
-    <div id="quiz1Questions"></div>
-    <script>
-      //List of all the questions and answers in Javascript
-      const questionsAndAnswers = {
-        quiz1: {
-          questions: {
-            1: "What are the gases that contribute to the greenhouse effect called?",
-            2: "True or false: Infrared radiation is emitted from the Sun.",
-            3: `Which of the following gases is NOT a greenhouse gas? 
-(A) Carbon dioxide
-(B) Methane
-(C) Sulfur dioxide
-(D) Water vapour`,
-            4: "How are you today? "            
-          } 
-        }
-      }; 
-      // Function to be called when the button is clicked
-      function handleClick1() {
-        console.log("Button clicked!");
-        // Display quiz questions beneath the button
-        const quiz1Questions = document.getElementById("quiz1Questions");
-        quiz1Questions.innerHTML = `
-          <h3>Quiz 1: The Greenhouse Effect</h3>
-          <p>
-            Welcome to Quiz 1: The Greenhouse Effect! <br>
-            With diverse and challenging questions, it will be your favorite quiz app! <br>
-            You get ONLY ONE attempt per question, so answer carefully. <br>
-            To exit the quiz midway, refresh the page. <br>
-            Enjoy! <br>
-            <br>
-            You will be asked five questions, 
-            some of which will be multiple choice questions, 
-            and some of which will be short-answer questions. <br>
+      </div>
+      <h2>Now presenting... the quizzes! Take one to see what you know!</h2>
+    </center>
+    <ol>
+      <li>Quiz 1: Earth's natural processes</li>
+      <button id="button1">Unit 1</button>
+      <div id="AOS1"></div>
+      <li>Quiz 2: Impacts on Earth's natural processes</li>
+      <button id="button2">Unit 1</button>
+      <div id="AOS2"></div>
+      <li>Quiz 3: Biodiversity</li>
+      <button id="button3">Unit 1</button>
+      <div id="AOS3"></div>
+      <li>Quiz 4: Climate change</li>
+      <button id="button4">Unit 1</button>
+      <div id="AOS4"></div>
+      
+      <script>
+        questionsAndAnswers = {
+          AOS1: {
+            questions: {
+              1: "",
+              2: "",
+              3: "",
+              4: "",
+              5: "",
+              6: "",
+              7: "",
+              8: "",
+              9: "",
+              10: "", 
+            }, 
+            answers: {
+              1: "",
+              2: "",
+              3: "",
+              4: "",
+              5: "",
+              6: "",
+              7: "",
+              8: "",
+              9: "",
+              10: "", 
+            }
+          }, 
+          AOS2: {
+            questions: {
+              1: "",
+              2: "",
+              3: "",
+              4: "",
+              5: "",
+              6: "",
+              7: "",
+              8: "",
+              9: "",
+              10: "", 
+            }, 
+            answers: {
+              1: "",
+              2: "",
+              3: "",
+              4: "",
+              5: "",
+              6: "",
+              7: "",
+              8: "",
+              9: "",
+              10: "", 
+            }
+          },
+          AOS3: {
+            questions: {
+              1: "",
+              2: "",
+              3: "",
+              4: "",
+              5: "",
+              6: "",
+              7: "",
+              8: "",
+              9: "",
+              10: "", 
+            }, 
+            answers: {
+              1: "",
+              2: "",
+              3: "",
+              4: "",
+              5: "",
+              6: "",
+              7: "",
+              8: "",
+              9: "",
+              10: "", 
+            }
+          },
+          AOS4: {
+            questions: {
+              1: "",
+              2: "",
+              3: "",
+              4: "",
+              5: "",
+              6: "",
+              7: "",
+              8: "",
+              9: "",
+              10: "", 
+            }, 
+            answers: {
+              1: "",
+              2: "",
+              3: "",
+              4: "",
+              5: "",
+              6: "",
+              7: "",
+              8: "",
+              9: "",
+              10: "", 
+            }
+          }
+        }; 
+        function generateQuestion(quizNumber, randomNumber){
+          if (quizNumber === 1) {
+            var question = questionsAndAnswers[AOS1[questions[randomNumber]]]
+          }
+          else if (quizNumber === 2) {
+            var question = questionsAndAnswers[AOS2[questions[randomNumber]]]
+          }
+          else if (quizNumber === 3) {
+            var question = questionsAndAnswers[AOS3[questions[randomNumber]]]
+          }
+          else if (quizNumber === 4) {
+            var question = questionsAndAnswers[AOS4[questions[randomNumber]]]
+          }
+          return question
+        };
+        function checkAnswer(answer, quizNumber, questionNumber){
+          if (quizNumber === 1) {
+            if (answer === questionsAndAnswers[AOS1[questions[questionNumber]]]){
+              return "Congratulations! You are correct!"
+            } 
+            else {
+              return `Oops! You are incorrect! (Correct answer: {questionsAndAnswers[AOS1[questions[questionNumber]]]})`
+            }
+          }
+          else if (quizNumber === 2) {
+            if (answer === questionsAndAnswers[AOS2[questions[questionNumber]]]){
+              return "Congratulations! You are correct!"
+            } 
+            else {
+              return `Oops! You are incorrect! (Correct answer: {questionsAndAnswers[AOS2[questions[questionNumber]]]})`
+            }
+          }
+          else if (quizNumber === 3) {
+            if (answer === questionsAndAnswers[AOS3[questions[questionNumber]]]){
+              return "Congratulations! You are correct!"
+            } 
+            else {
+              return `Oops! You are incorrect! (Correct answer: {questionsAndAnswers[AOS3[questions[questionNumber]]]})`
+            }
+          }
+          else if (quizNumber === 4) {
+            if (answer === questionsAndAnswers[AOS4[questions[questionNumber]]]){
+              return "Congratulations! You are correct!"
+            } 
+            else {
+              return `Oops! You are incorrect! (Correct answer: {questionsAndAnswers[AOS4[questions[questionNumber]]]})`
+            }
+          }
+        };
+        function handleClick(quizNumber, questionNumber = 0){
+          const question = document.getElementById("question");
+          if (quizNumber === 1){
+            if (questionNumber === 0){
+              question.innerHTML = `
+              <h3>Quiz 1: The Greenhouse Effect</h3>
+              <p>
+              Welcome to Quiz 1: The Greenhouse Effect! <br>
+              You get ONLY ONE attempt per question, so answer carefully. <br>
+              To exit the quiz midway, refresh the page. <br>
+              You will be asked five questions, 
+              some of which will be multiple choice questions, 
+              and some of which will be short-answer questions. <br>
+              </p>
+              
+              <button onclick="generateQuestion(1, 1 + Math.floor(Math.random() * 10))">`              
+            }
+          }
+  
+          question.innerHTML = `
             
+              
 
-          </p>
-          <ol>
-            <li>What is the greenhouse effect caused by?</li>
-            <input type="text" id="answer1">
-            <button onclick="checkAnswer1()">Submit Answer</button>
-            <p id="answer1Result"></p>
-          </ol>
-        `;
-      }
+            
+            <ol>
+              <li>What is the greenhouse effect caused by?</li>
+              <input type="text" id="answer1">
+              <button onclick="checkAnswer1()">Submit Answer</button>
+              <p id="answer1Result"></p>
+            </ol>
+          `;
+        };
 
-      // Function to check answer for question 1
-      function checkAnswer1() {
-        const answer1 = document.getElementById("answer1").value.trim().toLowerCase();
-        const answer1Result = document.getElementById("answer1Result");
-        if (answer1 === 'greenhouse gases') {
-          answer1Result.textContent = "Congratulations! You are correct!";
-        } else {
-          answer1Result.textContent = "Oops! You are incorrect! (Correct answer: greenhouse gases)";
-        }
-      }
+        // Function to check answer for question 1
+        function checkAnswer1() {
+            const answer1 = document.getElementById("answer1").value.trim().toLowerCase();
+            const answer1Result = document.getElementById("answer1Result");
+            if (answer1 === 'greenhouse gases') {
+              answer1Result.textContent = "Congratulations! You are correct!";
+            } else {
+              answer1Result.textContent = "Oops! You are incorrect! (Correct answer: greenhouse gases)";
+            }
+          }
 
-      // Get the button element using its ID
-      const button1 = document.getElementById("button1");
-      // Attach the event listener to the button
-      button1.addEventListener("click", handleClick1);
-    </script>
-    </li>
-
-    <li>Quiz 2: Natural Disasters</li>
-    <button id="button2">Click here!</button>
-    <div id="quiz2Questions"></div>
-    <script>
-      // Function to be called when the button is clicked
-      function handleClick2() {
-        console.log("Button clicked!");
-        // Display quiz questions beneath the button
-        const quiz2Questions = document.getElementById("quiz2Questions");
-        quiz2Questions.innerHTML = `
-          <h3>Quiz 2: Natural Disasters</h3>
-          <p>Welcome to Quiz 2: Natural Disasters!</p>
-          <p>With diverse and challenging questions, it will be your favorite quiz app!</p>
-          <p>You get ONLY ONE attempt per question, so answer carefully.</p>
-          <p>To exit the quiz midway, press the "Cancel" button.</p>
-          <p>Enjoy!</p>
-          <p>You will be asked five questions, some of which will be multiple choice questions, and some of which will be short-answer questions.</p>
-          <ol>
-            <li>Which type of natural disasters are caused by disruptions on the surface of the Earth?</li>
-            <input type="text" id="answer2">
-            <button onclick="checkAnswer2()">Submit Answer</button>
-            <p id="answer2Result"></p>
-          </ol>
-        `;
-      }
-
-      // Function to check answer for question 2
-      function checkAnswer2() {
-        const answer2 = document.getElementById("answer2").value.trim().toLowerCase();
-        const answer2Result = document.getElementById("answer2Result");
-        if (answer2 === 'geophysical') {
-          answer2Result.textContent = "Congratulations! You are correct!";
-        } else {
-          answer2Result.textContent = "Oops! You are incorrect! (Correct answer: geophysical)";
-        }
-      }
-
-      // Get the button element using its ID
-      const button2 = document.getElementById("button2");
-      // Attach the event listener to the button
-      button2.addEventListener("click", handleClick2);
-    </script>
-    </li>
-
-    <li>Quiz 3: The United Nations Sustainable Development Goals</li>
-    <button id="button3">Click here!</button>
-    <div id="quiz3Questions"></div>
-    <script>
-      // Function to be called when the button is clicked
-      function handleClick3() {
-        console.log("Button clicked!");
-        // Display quiz questions beneath the button
-        const quiz3Questions = document.getElementById("quiz3Questions");
-        quiz3Questions.innerHTML = `
-          <h3>Quiz 3: The United Nations Sustainable Development Goals</h3>
-          <p>Welcome to Quiz 3: The United Nations Sustainable Development Goals!</p>
-          <p>With diverse and challenging questions, it will be your favorite quiz app!</p>
-          <p>You get ONLY ONE attempt per question, so answer carefully.</p>
-          <p>To exit the quiz midway, press the "Cancel" button.</p>
-          <p>Enjoy!</p>
-          <p>You will be asked four questions, some of which will be multiple choice questions, and some of which will be short-answer questions.</p>
-          <ol>
-            <li>What is the first goal of the UN SDGs (United Nations Sustainable Development Goals)?</li>
-            <input type="text" id="answer3">
-            <button onclick="checkAnswer3()">Submit Answer</button>
-            <p id="answer3Result"></p>
-          </ol>
-        `;
-      }
-
-      // Function to check answer for question 3
-      function checkAnswer3() {
-        const answer3 = document.getElementById("answer3").value.trim().toLowerCase();
-        const answer3Result = document.getElementById("answer3Result");
-        if (answer3 === 'no poverty') {
-          answer3Result.textContent = "Congratulations! You are correct!";
-        } else {
-          answer3Result.textContent = "Oops! You are incorrect! (Correct answer: no poverty)";
-        }
-      }
-
-      // Get the button element using its ID
-      const button3 = document.getElementById("button3");
-      // Attach the event listener to the button
-      button3.addEventListener("click", handleClick3);
-    </script>
-    </li>
-  </ol>
-</body>
+          // Get the button element using its ID
+        const button3 = document.getElementById("button3");
+        // Attach the event listener to the button
+        button3.addEventListener("click", handleClick3);
+      </script>
+    </ol>
+  </body>
 </html>
