@@ -28,7 +28,7 @@ function gameLoop() {
     ctx.fillRect(0, canvas.height - groundHeight, canvas.width, groundHeight);
 
     // Tank movement
-    const movementIncrement = 0.01
+    const movementIncrement = 0.1
     document.addEventListener("keydown", function(event) {
         if (event.key === 'ArrowLeft' && tankX >= 0) {
             tankX -= movementIncrement
@@ -42,9 +42,9 @@ function gameLoop() {
             tankY -= movementIncrement
         } else if (event.key === 'w' && tankY >= 0) {
             tankY -= movementIncrement
-        } else if (event.key === 'ArrowDown' && tankY <= canvas.height + tankHeight) {
+        } else if (event.key === 'ArrowDown' && tankY <= canvas.height + tankHeight - 20) {
             tankY += movementIncrement
-        } else if (event.key === 's' && tankY <= canvas.height + tankHeight) {
+        } else if (event.key === 's' && tankY <= canvas.height + tankHeight - 20) {
             tankY += movementIncrement
         }            
     });
