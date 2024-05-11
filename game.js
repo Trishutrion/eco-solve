@@ -52,7 +52,6 @@ function gameLoop() {
         } else if (event.key === 'ArrowRight' || event.key === 'd') {
             tankX += 10
         }
-        keys[event.keyCode] = true;
     });
 
     // Particle generation
