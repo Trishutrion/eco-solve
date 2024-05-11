@@ -32,21 +32,28 @@ function gameLoop() {
     document.addEventListener("keydown", function(event) {
         if (event.key === 'ArrowLeft' && tankX >= 0) {
             tankX -= movementIncrement
-        } else if (event.key === 'a' && tankX >= 0) {
+        };
+        if (event.key === 'a' && tankX >= 0) {
             tankX -= movementIncrement
-        } else if (event.key === 'ArrowRight' && tankX <= canvas.width - tankWidth) {
+        };
+        if (event.key === 'ArrowRight' && tankX <= canvas.width - tankWidth) {
             tankX += movementIncrement
-        } else if (event.key === 'd' && tankX <= canvas.width - tankWidth) {
+        }; 
+        if (event.key === 'd' && tankX <= canvas.width - tankWidth) {
             tankX += movementIncrement
-        } else if (event.key === 'ArrowUp' && tankY >= 0) {
+        }; 
+        if (event.key === 'ArrowUp' && tankY >= 0) {
             tankY -= movementIncrement
-        } else if (event.key === 'w' && tankY >= 0) {
+        }; 
+        if (event.key === 'w' && tankY >= 0) {
             tankY -= movementIncrement
-        } else if (event.key === 'ArrowDown' && tankY <= canvas.height + tankHeight - 20) {
+        };
+        if (event.key === 'ArrowDown' && tankY <= canvas.height + tankHeight - 20) {
             tankY += movementIncrement
-        } else if (event.key === 's' && tankY <= canvas.height + tankHeight - 20) {
+        }; 
+        if (event.key === 's' && tankY <= canvas.height + tankHeight - 20) {
             tankY += movementIncrement
-        }            
+        };           
     });
 
     // Particle generation
