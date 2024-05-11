@@ -29,21 +29,21 @@ function gameLoop() {
 
     // Tank movement
     document.addEventListener("keydown", function(event) {
-        if (event.key === 'ArrowLeft') {
+        if (event.key === 'ArrowLeft' && tankX >= 0) {
             tankX -= 1
-        } else if (event.key === 'a') {
+        } else if (event.key === 'a' && tankX >= 0) {
             tankX -= 1
-        } else if (event.key === 'ArrowRight') {
+        } else if (event.key === 'ArrowRight' && tankX <= canvas.width) {
             tankX += 1
-        } else if (event.key === 'd') {
+        } else if (event.key === 'd' && tankX <= canvas.width) {
             tankX += 1
-        } else if (event.key === 'ArrowUp') {
+        } else if (event.key === 'ArrowUp' && tankY >= 0) {
             tankY += 1
-        } else if (event.key === 'w') {
+        } else if (event.key === 'w' && tankY >= 0) {
             tankY += 1
-        } else if (event.key === 'ArrowDown') {
+        } else if (event.key === 'ArrowDown' && tankY <= canvas.height) {
             tankY -=1
-        } else if (event.key === 's') {
+        } else if (event.key === 's' && tankY <= canvas.height) {
             tankY -=1
         }            
     });
