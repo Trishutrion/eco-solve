@@ -2,20 +2,11 @@
 const canvas = document.getElementById("gameCanvas");
 const ctx = canvas.getContext("2d");
 
-// Colors
-const WHITE = "#FFFFFF";
-const BLUE = "#0000FF";
-const RED = "#FF0000";
-const GREEN = "#00FF00";
-const BLACK = "#000000";
-
 // Game variables
-let SCREEN_WIDTH = canvas.width;
-let SCREEN_HEIGHT = canvas.height;
 let tankWidth = 150;
 let tankHeight = 75;
-let tankX = SCREEN_WIDTH / 2 - tankWidth / 2;
-let tankY = SCREEN_HEIGHT - tankHeight - 50;  // Adjust for the ground height
+let tankX = canvas.width / 2 - tankWidth / 2;
+let tankY = canvas.height - tankHeight - 50; // Adjust for the ground height
 let groundHeight = 50;
 let particleRadius = 10;
 let particleSpeed = 5;
@@ -27,29 +18,48 @@ let timeLeft = 60;
 // Font for text display
 ctx.font = "24px Arial";
 
+// Event listener for window resizing
+window.addEventListener("resize", resizeCanvas);
+
+// Function to resize canvas
+function resizeCanvas() {
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+    tankX = canvas.width / 2 - tankWidth / 2;
+    tankY = canvas.height - tankHeight - groundHeight;
+}
+
+// Event listeners for tank movement
+let keys = {};
+document.addEventListener("keydown", function(event) {
+    keys[event.keyCode] = true;
+});
+document.addEventListener("keyup", function(event) {
+    keys[event.keyCode] = false;
+});
+
 // Main game loop
 function gameLoop() {
     // Clear the canvas
-    ctx.fillStyle = WHITE;
-    ctx.fillRect(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
 
     // Draw ground
-    ctx.fillStyle = BLACK;
-    ctx.fillRect(0, SCREEN_HEIGHT - groundHeight, SCREEN_WIDTH, groundHeight);
+    ctx.fillStyle = "black";
+    ctx.fillRect(0, canvas.height - groundHeight, canvas.width, groundHeight);
 
     // Tank movement
     if (keys[37] && tankX > 0) {  // Left arrow key
         tankX -= 20;
     }
-    if (keys[39] && tankX < SCREEN_WIDTH - tankWidth) {  // Right arrow key
+    if (keys[39] && tankX < canvas.width - tankWidth) {  // Right arrow key
         tankX += 20;
     }
 
     // Particle generation
     if (Math.random() < 0.05) {
         let particleType = Math.random() < 0.5 ? "CO2" : "CH4";
-        let particleColor = particleType === "CO2" ? RED : GREEN;
-        let particleX = Math.random() * SCREEN_WIDTH;
+        let particleColor = particleType === "CO2" ? "red" : "green";
+        let particleX = Math.random() * canvas.width;
         let particleY = -particleRadius;
         particles.push({ type: particleType, color: particleColor, x: particleX, y: particleY });
     }
@@ -71,7 +81,7 @@ function gameLoop() {
         }
 
         // Remove particles that reach the bottom of the screen
-        if (particles[i].y - particleRadius >= SCREEN_HEIGHT - groundHeight) {
+        if (particles[i].y - particleRadius >= canvas.height - groundHeight) {
             particles.splice(i, 1);
         }
 
@@ -83,13 +93,13 @@ function gameLoop() {
     }
 
     // Draw tank
-    ctx.fillStyle = BLUE;
+    ctx.fillStyle = "blue";
     ctx.fillRect(tankX, tankY, tankWidth, tankHeight);
 
     // Draw text
-    ctx.fillStyle = BLACK;
+    ctx.fillStyle = "black";
     ctx.fillText("Temperature: " + temperature.toFixed(1) + "°C", 10, 30);
-    ctx.fillText("Time Left: " + timeLeft.toFixed(0) + "s", SCREEN_WIDTH - 200, 30);
+    ctx.fillText("Time Left: " + timeLeft.toFixed(0) + "s", canvas.width - 200, 30);
     ctx.fillText("Particles collected: " + collectedParticles, 10, 60);
 
     // Update temperature and time
@@ -102,15 +112,6 @@ function gameLoop() {
         alert("Game Over! Collected particles: " + collectedParticles);
     }
 }
-
-// Event listeners for tank movement
-let keys = {};
-document.addEventListener("keydown", function(event) {
-    keys[event.keyCode] = true;
-});
-document.addEventListener("keyup", function(event) {
-    keys[event.keyCode] = false;
-});
 
 // Start the game loop
 let gameLoopInterval = setInterval(gameLoop, 1000 / 30);
