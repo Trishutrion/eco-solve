@@ -42,7 +42,7 @@ function gameLoop() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
 
     // Draw ground
-    ctx.fillStyle = "black";
+    ctx.fillStyle = "green";
     ctx.fillRect(0, canvas.height - groundHeight, canvas.width, groundHeight);
 
     // Tank movement
