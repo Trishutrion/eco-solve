@@ -70,13 +70,13 @@ function gameLoop() {
 
         // Collision detection
         if (particles[i].y + particleRadius >= tankY && particles[i].x >= tankX && particles[i].x <= tankX + tankWidth) {
-            collectedParticles++;
+            collectedParticles += 1;
             if (particles[i].type === "CO2") {
                 temperature -= 0.1;
             } else if (particles[i].type === "CH4") {
                 temperature -= 1;
             }
-            particleSpeed += 2;
+            particleSpeed += 1;
             particles.splice(i, 1);
         }
 
@@ -103,7 +103,7 @@ function gameLoop() {
     ctx.fillText("Particles collected: " + collectedParticles, 10, 60);
 
     // Update temperature and time
-    temperature += (0.01 * Math.abs(25 - collectedParticles) / 10);
+    temperature += (0.001 * Math.abs(25 - collectedParticles) / 10);
     timeLeft -= 1 / 30;
 
     // Check game over
