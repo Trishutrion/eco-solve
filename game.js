@@ -18,17 +18,6 @@ let timeLeft = 60;
 // Font for text display
 ctx.font = "24px Arial";
 
-// Event listener for window resizing
-window.addEventListener("resize", resizeCanvas);
-
-// Function to resize canvas
-function resizeCanvas() {
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
-    tankX = canvas.width / 2 - tankWidth / 2;
-    tankY = canvas.height - tankHeight - groundHeight;
-}
-
 // Event listeners for tank movement
 let keys = {};
 
