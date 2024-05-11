@@ -37,7 +37,15 @@ function gameLoop() {
             tankX += 1
         } else if (event.key === 'd') {
             tankX += 1
-        }
+        } else if (event.key === 'ArrowUp') {
+            tankY += 1
+        } else if (event.key === 'w') {
+            tankY += 1
+        } else if (event.key === 'ArrowDown') {
+            tankY -=1
+        } else if (event.key === 's') {
+            tankY -=1
+        }            
     });
 
     // Particle generation
