@@ -30,13 +30,13 @@ function gameLoop() {
     // Tank movement
     document.addEventListener("keydown", function(event) {
         if (event.key === 'ArrowLeft') {
-            tankX -= 10
+            tankX -= 1
         } else if (event.key === 'a') {
-            tankX -= 10
+            tankX -= 1
         } else if (event.key === 'ArrowRight') {
-            tankX += 10
+            tankX += 1
         } else if (event.key === 'd') {
-            tankX += 10
+            tankX += 1
         }
     });
 
