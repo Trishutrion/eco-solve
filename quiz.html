@@ -16,226 +16,112 @@
         <a href="contacts.html">Contacts</a>
       </div>
       <h2>Now presenting... the quizzes! Take one to see what you know!</h2>
-    </center>
-    <ol>
-      <li>Quiz 1: Earth's natural processes</li>
-      <button id="button1">Unit 1</button>
-      <div id="AOS1"></div>
-      <li>Quiz 2: Impacts on Earth's natural processes</li>
-      <button id="button2">Unit 1</button>
-      <div id="AOS2"></div>
-      <li>Quiz 3: Biodiversity</li>
-      <button id="button3">Unit 1</button>
-      <div id="AOS3"></div>
-      <li>Quiz 4: Climate change</li>
-      <button id="button4">Unit 1</button>
-      <div id="AOS4"></div>
-      
-      <script>
-        questionsAndAnswers = {
-          AOS1: {
-            questions: {
-              1: "",
-              2: "",
-              3: "",
-              4: "",
-              5: "",
-              6: "",
-              7: "",
-              8: "",
-              9: "",
-              10: "", 
-            }, 
-            answers: {
-              1: "",
-              2: "",
-              3: "",
-              4: "",
-              5: "",
-              6: "",
-              7: "",
-              8: "",
-              9: "",
-              10: "", 
+    </center>    
+    <div id="quizContainer"></div>
+    <script>
+        const quizzes = {
+            naturalProcesses: {
+                title: "Natural Processes Quiz",
+                questions: [
+                    "What is the process by which water changes from liquid to vapor?",
+                    "What causes the formation of rainbows?",
+                    "What process describes the breakdown of rocks into smaller particles?",
+                    "What causes tides in the ocean?",
+                    "What natural process leads to the formation of caves in limestone rocks?"
+                ],
+                answers: [
+                    "evaporation",
+                    "refraction",
+                    "weathering",
+                    "gravitational pull",
+                    "erosion"
+                ]
+            },
+            impactsOnProcesses: {
+                title: "Impacts on Natural Processes Quiz",
+                questions: [
+                    "What human activity contributes to deforestation?",
+                    "How does air pollution affect natural processes?",
+                    "What is the primary cause of soil erosion?",
+                    "How do dams impact river ecosystems?",
+                    "What is the main consequence of overfishing in marine environments?"
+                ],
+                answers: [
+                    "logging",
+                    "disrupts natural cycles",
+                    "water runoff",
+                    "alter flow patterns",
+                    "decline in fish population"
+                ]
+            },
+            biodiversity: {
+                title: "Biodiversity Quiz",
+                questions: [
+                    "What term describes the variety of life forms on Earth?",
+                    "Which ecosystem is known for its high biodiversity?",
+                    "What is the main threat to biodiversity caused by human activity?",
+                    "What is the process of gradual change in ecosystems over time?",
+                    "Which species are particularly vulnerable to habitat loss?"
+                ],
+                answers: [
+                    "biodiversity",
+                    "tropical rainforests",
+                    "habitat destruction",
+                    "succession",
+                    "specialist species"
+                ]
+            },
+            climateChange: {
+                title: "Climate Change Quiz",
+                questions: [
+                    "What greenhouse gas is primarily responsible for global warming?",
+                    "How does deforestation contribute to climate change?",
+                    "What are the effects of melting polar ice caps?",
+                    "What is the term for the increase in Earth's average temperature over time?",
+                    "What are some consequences of climate change on ecosystems?"
+                ],
+                answers: [
+                    "carbon dioxide",
+                    "reduces carbon sinks",
+                    "rising sea levels",
+                    "global warming",
+                    "habitat loss and"
+                ]
             }
-          }, 
-          AOS2: {
-            questions: {
-              1: "",
-              2: "",
-              3: "",
-              4: "",
-              5: "",
-              6: "",
-              7: "",
-              8: "",
-              9: "",
-              10: "", 
-            }, 
-            answers: {
-              1: "",
-              2: "",
-              3: "",
-              4: "",
-              5: "",
-              6: "",
-              7: "",
-              8: "",
-              9: "",
-              10: "", 
-            }
-          },
-          AOS3: {
-            questions: {
-              1: "",
-              2: "",
-              3: "",
-              4: "",
-              5: "",
-              6: "",
-              7: "",
-              8: "",
-              9: "",
-              10: "", 
-            }, 
-            answers: {
-              1: "",
-              2: "",
-              3: "",
-              4: "",
-              5: "",
-              6: "",
-              7: "",
-              8: "",
-              9: "",
-              10: "", 
-            }
-          },
-          AOS4: {
-            questions: {
-              1: "",
-              2: "",
-              3: "",
-              4: "",
-              5: "",
-              6: "",
-              7: "",
-              8: "",
-              9: "",
-              10: "", 
-            }, 
-            answers: {
-              1: "",
-              2: "",
-              3: "",
-              4: "",
-              5: "",
-              6: "",
-              7: "",
-              8: "",
-              9: "",
-              10: "", 
-            }
-          }
-        }; 
-        function generateQuestion(quizNumber, randomNumber){
-          if (quizNumber === 1) {
-            var question = questionsAndAnswers[AOS1[questions[randomNumber]]]
-          }
-          else if (quizNumber === 2) {
-            var question = questionsAndAnswers[AOS2[questions[randomNumber]]]
-          }
-          else if (quizNumber === 3) {
-            var question = questionsAndAnswers[AOS3[questions[randomNumber]]]
-          }
-          else if (quizNumber === 4) {
-            var question = questionsAndAnswers[AOS4[questions[randomNumber]]]
-          }
-          return question
-        };
-        function checkAnswer(answer, quizNumber, questionNumber){
-          if (quizNumber === 1) {
-            if (answer === questionsAndAnswers[AOS1[questions[questionNumber]]]){
-              return "Congratulations! You are correct!"
-            } 
-            else {
-              return `Oops! You are incorrect! (Correct answer: {questionsAndAnswers[AOS1[questions[questionNumber]]]})`
-            }
-          }
-          else if (quizNumber === 2) {
-            if (answer === questionsAndAnswers[AOS2[questions[questionNumber]]]){
-              return "Congratulations! You are correct!"
-            } 
-            else {
-              return `Oops! You are incorrect! (Correct answer: {questionsAndAnswers[AOS2[questions[questionNumber]]]})`
-            }
-          }
-          else if (quizNumber === 3) {
-            if (answer === questionsAndAnswers[AOS3[questions[questionNumber]]]){
-              return "Congratulations! You are correct!"
-            } 
-            else {
-              return `Oops! You are incorrect! (Correct answer: {questionsAndAnswers[AOS3[questions[questionNumber]]]})`
-            }
-          }
-          else if (quizNumber === 4) {
-            if (answer === questionsAndAnswers[AOS4[questions[questionNumber]]]){
-              return "Congratulations! You are correct!"
-            } 
-            else {
-              return `Oops! You are incorrect! (Correct answer: {questionsAndAnswers[AOS4[questions[questionNumber]]]})`
-            }
-          }
-        };
-        function handleClick(quizNumber, questionNumber = 0){
-          const question = document.getElementById("question");
-          if (quizNumber === 1){
-            if (questionNumber === 0){
-              question.innerHTML = `
-              <h3>Quiz 1: The Greenhouse Effect</h3>
-              <p>
-              Welcome to Quiz 1: The Greenhouse Effect! <br>
-              You get ONLY ONE attempt per question, so answer carefully. <br>
-              To exit the quiz midway, refresh the page. <br>
-              You will be asked five questions, 
-              some of which will be multiple choice questions, 
-              and some of which will be short-answer questions. <br>
-              </p>
-              
-              <button onclick="generateQuestion(1, 1 + Math.floor(Math.random() * 10))">`              
-            }
-          }
-  
-          question.innerHTML = `
-            
-              
-
-            
-            <ol>
-              <li>What is the greenhouse effect caused by?</li>
-              <input type="text" id="answer1">
-              <button onclick="checkAnswer1()">Submit Answer</button>
-              <p id="answer1Result"></p>
-            </ol>
-          `;
         };
 
-        // Function to check answer for question 1
-        function checkAnswer1() {
-            const answer1 = document.getElementById("answer1").value.trim().toLowerCase();
-            const answer1Result = document.getElementById("answer1Result");
-            if (answer1 === 'greenhouse gases') {
-              answer1Result.textContent = "Congratulations! You are correct!";
-            } else {
-              answer1Result.textContent = "Oops! You are incorrect! (Correct answer: greenhouse gases)";
-            }
-          }
+        function loadQuiz(quizName) {
+            const quiz = quizzes[quizName];
+            const quizContainer = document.getElementById('quizContainer');
+            quizContainer.innerHTML = `<h2>${quiz.title}</h2>`;
+            const form = document.createElement('form');
+            form.innerHTML = "<ol>" + quiz.questions.map((question, index) => `<li>${question}<br><input type='text' id='q${index + 1}'></li>`).join('') + "</ol>";
+            const submitButton = document.createElement('button');
+            submitButton.textContent = "Submit";
+            submitButton.onclick = () => gradeQuiz(quizName);
+            form.appendChild(submitButton);
+            quizContainer.appendChild(form);
+        }
 
-          // Get the button element using its ID
-        const button3 = document.getElementById("button3");
-        // Attach the event listener to the button
-        button3.addEventListener("click", handleClick3);
-      </script>
-    </ol>
+        function gradeQuiz(quizName) {
+            const quiz = quizzes[quizName];
+            const answers = quiz.answers;
+            const form = document.getElementById('quizContainer').querySelector('form');
+            let score = 0;
+
+            for (let i = 0; i < answers.length; i++) {
+                const userAnswer = form.elements['q' + (i + 1)].value.toLowerCase().trim();
+                if (userAnswer === answers[i]) {
+                    score++;
+                }
+            }
+
+            alert(`Your score: ${score}/${answers.length}`);
+        }
+    </script>
+    <button onclick="loadQuiz('naturalProcesses')">Natural Processes Quiz</button>
+    <button onclick="loadQuiz('impactsOnProcesses')">Impacts on Natural Processes Quiz</button>
+    <button onclick="loadQuiz('biodiversity')">Biodiversity Quiz</button>
+    <button onclick="loadQuiz('climateChange')">Climate Change Quiz</button>
   </body>
 </html>
