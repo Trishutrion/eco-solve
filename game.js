@@ -10,7 +10,6 @@ let tankY = canvas.height - tankHeight - groundHeight;
 let particles = [];
 let temperature = 25;
 let highScore = 25;
-
 // Load high score from JSON file
 fetch('score.json')
 .then(response => response.json())
@@ -25,27 +24,27 @@ fetch('score.json')
 ctx.font = "24px Arial";
 
 function gameLoop() {
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
 
+    //Clear the canvas
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
     // Draw ground
     ctx.fillStyle = "green";
     ctx.fillRect(0, canvas.height - groundHeight, canvas.width, groundHeight);
-
-    // Tank movement
+    // Event handling: Movement
     document.addEventListener("keydown", function(event) {
-        if (event.key === 'ArrowLeft' && tankX >= 0) {
-            tankX -= 0.5;
-        }
-        if (event.key === 'ArrowRight' && tankX <= canvas.width - tankWidth) {
-            tankX += 0.5;
-        }
-        if (event.key === 'ArrowUp' && tankY >= 0) {
-            tankY -= 0.5;
-        }
-        if (event.key === 'ArrowDown' && tankY <= canvas.height - tankHeight) {
-            tankY += 0.5;
-        }
-    });
+        if ((event.key === "ArrowLeft" || event.key === "a") && tankX >= 0) {
+            tankX += 0.1
+        };
+        if ((event.key === "ArrowRight" || event.key === "d") && tankX <= canvas.width - tankWidth) {
+            tankX -= 0.1
+        };
+        if ((event.key === "ArrowUp" || event.key === "w") && tankY >= 0) {
+            tankY -= 0.1
+        }; 
+        if ((event.key === "ArrowDown" || event.key === "s") && tankY <= canvas.height - tankHeight) {
+            tankY += 0.1
+        };           
+    }); 
 
     // Particle generation
     if (particles.length === 0) {
@@ -64,7 +63,7 @@ function gameLoop() {
             particle.y = -particleRadius
         }
 
-        // Remove particles that reach the bottom of the screen
+        // Remove particles that reach the bottom of the canvas
         if (particle.y - particleRadius >= canvas.height - groundHeight) {
             particles.pop();
         }
