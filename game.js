@@ -34,17 +34,17 @@ function gameLoop() {
             tankX -= movementIncrement
         } else if (event.key === 'a' && tankX >= 0) {
             tankX -= movementIncrement
-        } else if (event.key === 'ArrowRight' && tankX <= canvas.width) {
+        } else if (event.key === 'ArrowRight' && tankX <= canvas.width - tankWidth) {
             tankX += movementIncrement
-        } else if (event.key === 'd' && tankX <= canvas.width) {
+        } else if (event.key === 'd' && tankX <= canvas.width - tankWidth) {
             tankX += movementIncrement
         } else if (event.key === 'ArrowUp' && tankY >= 0) {
             tankY -= movementIncrement
         } else if (event.key === 'w' && tankY >= 0) {
             tankY -= movementIncrement
-        } else if (event.key === 'ArrowDown' && tankY <= canvas.height) {
+        } else if (event.key === 'ArrowDown' && tankY <= canvas.height + tankHeight) {
             tankY += movementIncrement
-        } else if (event.key === 's' && tankY <= canvas.height) {
+        } else if (event.key === 's' && tankY <= canvas.height + tankHeight) {
             tankY += movementIncrement
         }            
     });
