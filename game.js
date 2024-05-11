@@ -59,7 +59,7 @@ function gameLoop() {
     }
 
     // Update particles
-    for (let i = 0; i < particles.length; i++) {
+    for (let i = 0; i < particles.length; i += 1) {
         particles[i].y += particleSpeed;
 
         // Collision detection
