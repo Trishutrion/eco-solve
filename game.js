@@ -28,7 +28,7 @@ function gameLoop() {
     ctx.fillRect(0, canvas.height - groundHeight, canvas.width, groundHeight);
 
     // Tank movement
-    const movementIncrement = 0.1
+    const movementIncrement = 0.01
     document.addEventListener("keydown", function(event) {
         if (event.key === 'ArrowLeft' && tankX >= 0) {
             tankX -= movementIncrement
