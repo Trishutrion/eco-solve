@@ -18,13 +18,6 @@ let timeLeft = 60;
 // Font for text display
 ctx.font = "24px Arial";
 
-// Event listeners for tank movement
-let keys = {};
-
-document.addEventListener("keyup", function(event) {
-    keys[event.keyCode] = false;
-});
-
 // Main game loop
 function gameLoop() {
     // Clear the canvas
