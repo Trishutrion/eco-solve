@@ -31,9 +31,7 @@ function resizeCanvas() {
 
 // Event listeners for tank movement
 let keys = {};
-document.addEventListener("keydown", function(event) {
-    keys[event.keyCode] = true;
-});
+
 document.addEventListener("keyup", function(event) {
     keys[event.keyCode] = false;
 });
@@ -48,12 +46,14 @@ function gameLoop() {
     ctx.fillRect(0, canvas.height - groundHeight, canvas.width, groundHeight);
 
     // Tank movement
-    if (keys[37] && tankX > 0) {  // Left arrow key
-        tankX -= 20;
-    }
-    if (keys[39] && tankX < canvas.width - tankWidth) {  // Right arrow key
-        tankX += 20;
-    }
+    document.addEventListener("keydown", function(event) {
+        if (event.key === 'ArrowLeft' || event.key === 'a') {
+            tankX -= 10
+        } else if (event.key === 'ArrowRight' || event.key === 'd') {
+            tankX += 10
+        }
+        keys[event.keyCode] = true;
+    });
 
     // Particle generation
     if (Math.random() < 0.05) {
