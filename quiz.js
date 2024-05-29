@@ -10,7 +10,7 @@
 // Quiz questions and answers
 let questionsAndAnswers = {
     quiz1: {
-        title: "Natural processes",
+        "title": "Natural processes",
         questions: {
             1: "Testing...",
             2: "Testing...",
@@ -37,7 +37,7 @@ let questionsAndAnswers = {
         }
     },
     quiz2: {
-        title: "",
+        "title": "",
         questions: {
             1: "",
             2: "",
@@ -64,7 +64,7 @@ let questionsAndAnswers = {
         }
     },
     quiz3: {
-        title: "",
+        "title": "",
         questions: {
             1: "",
             2: "",
@@ -91,7 +91,7 @@ let questionsAndAnswers = {
         }
     },
     quiz4: {
-        title: "",
+        "title": "",
         questions: {
             1: "",
             2: "",
@@ -129,7 +129,7 @@ function startQuiz(quizNumber) {
 function welcomeUser(quizNumber) {
     let display = document.getElementById(`${quizNumber}container`);
     display.innerHTML = `Welcome to ${quizNumber}! 
-    This is a quiz that will test your knowledge of ${questionsAndAnswers[quizNumber[title]].toLowerCase()}.
+    This is a quiz that will test your knowledge of ${questionsAndAnswers[quizNumber["title"]].toLowerCase()}.
 
     You will be asked five questions in a random order, which will consist of multiple choice questions, true or false questions, 
     and/or short-answer questions.
