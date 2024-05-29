@@ -9,7 +9,7 @@
 
 // Quiz questions and answers
 let questionsAndAnswers = {
-    quiz1: {
+    "quiz1": {
         "title": "Natural processes",
         questions: {
             1: "Testing...",
@@ -36,7 +36,7 @@ let questionsAndAnswers = {
             10: "ok" 
         }
     },
-    quiz2: {
+    "quiz2": {
         "title": "",
         questions: {
             1: "",
@@ -63,7 +63,7 @@ let questionsAndAnswers = {
             10: "" 
         }
     },
-    quiz3: {
+    "quiz3": {
         "title": "",
         questions: {
             1: "",
@@ -90,7 +90,7 @@ let questionsAndAnswers = {
             10: "" 
         }
     },
-    quiz4: {
+    "quiz4": {
         "title": "",
         questions: {
             1: "",
