@@ -1,8 +1,169 @@
+/**Eco-Solve: Quizzes
+ * by Arnav Bagal
+ * 
+ * This is the quizzes page, where users can test out how good their knowledge of environmental science is. 
+ * There are four quizzes, which are on natural processes, impacts on natural processes, biodiversity, and climate change respectively. 
+ * 
+ * P.S. The quiz content was inspired by the study design of VCE Environmental Science. 
+ */
 
-function generateQuiz(quizNumber) {
-
+// Quiz questions and answers
+let questionsAndAnswers = {
+    quiz1: {
+        title: "Natural processes",
+        questions: {
+            1: "Testing...",
+            2: "Testing...",
+            3: "Testing...",
+            4: "Testing...",
+            5: "Testing...",
+            6: "Testing...",
+            7: "Testing...",
+            8: "Testing...",
+            9: "Testing...",
+            10: "Testing..."           
+        },
+        answers: {
+            1: "ok",
+            2: "ok",
+            3: "ok",
+            4: "ok",
+            5: "ok",
+            6: "ok",
+            7: "ok",
+            8: "ok",
+            9: "ok",
+            10: "ok" 
+        }
+    },
+    quiz2: {
+        title: "",
+        questions: {
+            1: "",
+            2: "",
+            3: "",
+            4: "",
+            5: "",
+            6: "",
+            7: "",
+            8: "",
+            9: "",
+            10: ""           
+        },
+        answers: {
+            1: "",
+            2: "",
+            3: "",
+            4: "",
+            5: "",
+            6: "",
+            7: "",
+            8: "",
+            9: "",
+            10: "" 
+        }
+    },
+    quiz3: {
+        title: "",
+        questions: {
+            1: "",
+            2: "",
+            3: "",
+            4: "",
+            5: "",
+            6: "",
+            7: "",
+            8: "",
+            9: "",
+            10: ""           
+        },
+        answers: {
+            1: "",
+            2: "",
+            3: "",
+            4: "",
+            5: "",
+            6: "",
+            7: "",
+            8: "",
+            9: "",
+            10: "" 
+        }
+    },
+    quiz4: {
+        title: "",
+        questions: {
+            1: "",
+            2: "",
+            3: "",
+            4: "",
+            5: "",
+            6: "",
+            7: "",
+            8: "",
+            9: "",
+            10: ""           
+        },
+        answers: {
+            1: "",
+            2: "",
+            3: "",
+            4: "",
+            5: "",
+            6: "",
+            7: "",
+            8: "",
+            9: "",
+            10: "" 
+        }
+    }    
 };
-let quizzes = {
+
+/**Starts the quiz */
+function startQuiz(quizNumber) {
+    console.log(`${quizNumber} has been started!`)
+    welcomeUser(quizNumber)
+};
+
+/**Gives a welcome introduction to the user. */
+function welcomeUser(quizNumber) {
+    let display = document.getElementById(`${quizNumber}container`);
+    display.innerHTML = `Welcome to ${quizNumber}! 
+    This is a quiz that will test your knowledge of ${questionsAndAnswers[quizNumber[title]].toLowerCase()}.
+
+    You will be asked five questions in a random order, which will consist of multiple choice questions, true or false questions, 
+    and/or short-answer questions.
+
+    After you answer the question, you can check it using the "Check my Answer" button.
+    Your total score will be tracked and at the end of the quiz, you will know your total score. 
+
+    Enjoy!
+    <button onclick="generateQuestion(quizNumber)">Begin!</button>
+    ` 
+};
+
+/** Generates and displays a random question using random numbers. */
+function generateAndDisplayQuestion(quizNumber) {
+    let display = document.getElementById(`${quizNumber}container`);
+    let randomNumber = Math.random() * 10;
+    let questionNumber = 1;
+    display.innerHTML = ``
+    display.innerHTML = `Question ${questionNumber}: ${questionsAndAnswers[quizNumber[questions[randomNumber]]]}
+    <input type="text"; id="answer">
+    <button onlick="checkAnswer(quizNumber, randomNumber, display)">Check my Answer</button>`
+};
+
+/** Checks the answer for the specified question. */
+function checkAnswer(quizNumber, questionNumber, display) {
+    let submittedAnswer = document.getElementById("answer");
+    let correctAnswer = questionsAndAnswers[quizNumber[answers[questionNumber]]];
+    if (submittedAnswer === correctAnswer) {
+        display.innerHTML += `Congratulations! You are correct!
+        <button onlick = generateAndDisplayQuestion(quizNumber)>Next question</button>`
+    }
+};
+
+/**let quizzes = {
 quiz1: {
 title: "Natural Processes Quiz",
 questionsAndAnswers: {
@@ -78,7 +239,7 @@ answers: [
     "habitat loss and"
 ]
 }
-};
+}; 
 
 function loadQuiz(quizName) {
 let quiz = quizzes[quizName];
@@ -108,3 +269,9 @@ if (userAnswer === answers[i]) {
 
 alert(`Your score: ${score}/${answers.length}`);
 }
+
+
+*/
+
+
+
