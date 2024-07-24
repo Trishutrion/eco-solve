@@ -26,6 +26,9 @@ function intro() {
         });
         // Clear the canvas
         ctx.clearRect(0, 0, canvas.width, canvas.height);
+        // Make the background white
+        ctx.fillStyle = 'white';
+        ctx.fillRect(0, 0, canvas.width, canvas.height)
         // ctx text on screen 
         ctx.fillStyle = 'black';
         var fontSize = 50;
@@ -73,6 +76,9 @@ function howToPlay() {
         });
         // Clear the canvas
         ctx.clearRect(0, 0, canvas.width, canvas.height);
+        // Make the background white
+        ctx.fillStyle = 'white';
+        ctx.fillRect(0, 0, canvas.width, canvas.height)
         // ctx text on screen 
         ctx.fillStyle = 'black';
         var fontSize = 50;
