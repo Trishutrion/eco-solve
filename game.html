@@ -1,18 +1,34 @@
 <!DOCTYPE html>
-<html>
+<!-- 
+    Eco-Solve: Game Page
+    Description: This page hosts the interactive Eco-Quest game, part of the Eco-Solve project aimed at educating users about environmental conservation through engaging gameplay. Players will navigate through various levels, solving puzzles and learning about sustainability and environmental protection.
+    Author: Arnav Bagal
+    Date: 2023
+-->
+<html lang="en">
     <head>
-        <title>Eco-Quest</title>
-        <link rel="stylesheet", href="styles.css">
-    </head>    
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>
+            Games
+        </title>
+        <link rel="stylesheet"; href="styles.css">
+    </head>
     <body>
-      <center>
-        <h1>Mini-Game: Eco-Quest</h1>
-        <div class="menu"; id="menu">
-          <script src="menu.js"></script>
+        <h1>Mini-Games</h1>
+        <h2>Knocked one, knocked one, knocked another! I'm pushing!</h2>
+        <div style="display: flex; justify-content: center;">
+            <div id="navbar">
+                <script src="navbar.js">
+                    console.log("Navbar loaded");
+                </script>
+            </div>
         </div>
-        <h2>Use the arrow keys or the "W A S D" keys to move!</h2>
-      </center>
-      <canvas id="gameCanvas" width="800" height="600"></canvas>
-      <script src="game.js"></script> 
+        <p>
+            <h2>Eco-Quest</h2>
+            <canvas id="canvas" width="800" height="600">
+                <script src="game.js"></script>
+            </canvas>                       
+        </p>        
     </body>
 </html>

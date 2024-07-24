@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<!--Eco-Solve: Personal Tracker
+by Arnav Bagal
+
+Personal Tracker
+Push on, there is always room at the top! 
+
+Navigation bar: 
+Home    Videos   Quizzes   Games   Personal Tracker
+
+Survey
+ - 
+ - 
+ - 
+
+Goal Setting
+ - 
+ - 
+ - 
+-->
+<html lang="en">
+    <head>
+        <title>Eco-Solve</title>
+        <link rel="stylesheet"; href="styles.css">
+        <meta charset="UTF-8">
+        <meta name="description" content="Eco-Solve (Personal Tracker)">
+        <meta name="keywords" content="Eco-Solve, tracker">
+        <meta name="author" content="Arnav Bagal">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <h1>Personal Tracker</h1>
+        <h2>Push on, there is always room at the top!</h2>
+        <div style="display: flex; justify-content: center;">
+            <div id="navbar">
+                <script src="navbar.js"></script>
+            </div> 
+        </div>   
+        <script src="tracker.js"></script>
+        <p>
+            <h2>Environmental Impact Survey</h2>
+            <div id="box" 
+            style="background-color: aqua;">
+                <div id="impacts">
+                    Please read the information below carefully and only undertake the survey if it is in accord with yourself.<br>                    
+                    <h4>Survey Information</h4>
+                    In this survey, you will be responding to questions which assess your impact on the environment.<br>
+                    None of these questions will ask for any personal details, such as your name, address, date of birth, etc.<br>
+                    To maintain the integrity of such a system, please answer all the questions honestly and truthfully. <br>
+                    <h4>Data Collection Methods</h4> 
+                    All data collected from this survey is stored in a .json file which is not accessible to any third-party applications.<br>
+                    Hence, if required, users can modify, change, and/or delete their data from this .json file if they wish to.<br>
+                    We value privacy at Eco-Solve, so your data is yours and not visible to anyone (even us, for that matter).<br>
+                    <br>
+                    <button onclick="impactsSurvey()">Begin!</button>               
+                </div>
+            </div>
+            <h2>Environmental Goal-Setting Survey</h2> 
+            <div id="box" 
+            style="background-color: lightgreen;">                
+                <div id="goal-setting">
+                    Please read the information below carefully and only undertake the survey if it is in accord with yourself.<br>                    
+                    <h4>Survey Information</h4>
+                    In this survey, you will be setting personal goals about how you wish to reduce your impact on the environment.<br>
+                    This process will not require any personal details, such as your name, address, date of birth, etc.<br>
+                    To maintain the integrity of such a system, please set your goals honestly and truthfully. <br>
+                    <h4>Data Collection Methods</h4> 
+                    All data collected from this survey is stored in a .json file which is not accessible to any third-party applications.<br>
+                    Hence, if required, users can modify, change, and/or delete their data from this .json file if they wish to.<br>
+                    We value privacy at Eco-Solve, so your data is yours and not visible to anyone (even us, for that matter).<br>
+                    <br>
+                    <button onclick="goalSettingSurvey()">Begin!</button>
+                </div>
+            </div>                
+        </p>
+    </body>    
+</html>

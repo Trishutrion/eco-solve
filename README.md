@@ -1,29 +1,30 @@
-**Important Information Regarding Eco-Solve**
+# Eco-Solve Online Interface
 
-Eco-Solve is an environmental education website where users can learn more about the environment <br> 
-and current environmental issues, and make more sustainable and eco-friendly choices. <br>
-To do this, users can watch videos, take quizzes, play games, and even set their own sustainability goals. <br>
+Welcome to the Eco-Solve Online Interface! This interface allows users to interact with the Eco-Solve platform and contribute to solving environmental challenges.
 
-Videos <br>
-    - Echoes of Humanity <br>
+## Getting Started
 
-Quizzes <br> 
-    - Earth's Natural Processes <br>
-    - Impacts on natural processes <br>
-    - Biodiversity <br>
-    - Climate change <br>
+To get started with the Eco-Solve Online Interface, follow these steps:
 
-Mini-Game <br> 
-    - Eco-Quest <br>
-        - Aim of the game: Collect as many greenhouse gas particles as possible <br>
-        - More particles collected, faster particles fall <br>
-        - Collect as many particles as possible in one minute. <br>
+1. Clone the repository to your local machine.
+2. Install the required dependencies by running `npm install`.
+3. Start the development server by running `npm start`.
+4. Open your browser and navigate to `http://localhost:3000`.
 
-Personal Tracker <br> 
-    - Check your personal environmental footprint <br>
-    - BONUS: Set personal sustainability goals <br>
+## Features
 
-Contacts <br>
-    - Emails <br>
-    - Further sites and links <br>
-    - Resources used <br>
+The Eco-Solve Online Interface provides the following features:
+
+- User registration and login
+- Dashboard displaying active challenges
+- Challenge submission form
+- Leaderboard showcasing top contributors
+- Notifications for challenge updates
+
+## Contributing
+
+We welcome contributions from the community! If you would like to contribute to the Eco-Solve Online Interface, please follow our [contribution guidelines](CONTRIBUTING.md).
+
+## License
+
+This project is licensed under the [MIT License](LICENSE).
