@@ -19,7 +19,7 @@ function intro() {
         // Event handling: Key presses
         document.addEventListener('keydown', function(event) {
             if (event.key === ' ') { // Spacebar to begin game
-                game();
+                gameLoop();
             } else if (event.key === 'h') { // H to see how to play
                 howToPlay();
             };
@@ -67,7 +67,7 @@ function howToPlay() {
         // Event handling: Key presses
         document.addEventListener('keydown', function(event) {
             if (event.key === ' ') { // Spacebar to begin game
-                game();
+                gameLoop();
                 running = false;
             } else if (event.key === 'b') { // H to see how to play
                 intro();
