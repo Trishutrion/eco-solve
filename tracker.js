@@ -55,7 +55,7 @@ function impactsSurvey() {
     <input type="number" min="1" max="10" step="0.5"><br>
     <br>
     <br>
-    <button onclick="console.log(Survey submitted!)">Submit!</button> <br>
+    <button onclick="console.log("Survey submitted!")">Submit!</button> <br>
     <br>
     `
 };
@@ -117,7 +117,7 @@ function goalSettingSurvey() {
     <input type="number" min="1" max="10" step="0.5"><br>
     <br>
     <br>
-    <button onclick="console.log(Survey submitted!)">Submit!</button> <br>
+    <button onclick="console.log("Survey submitted!")">Submit!</button> <br>
     <br>
     `
 };
