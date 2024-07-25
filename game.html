@@ -26,9 +26,12 @@
         </div>
         <p>
             <h2>Eco-Quest</h2>
-            <canvas id="canvas" width="800" height="600">
-                <script src="game.js"></script>
-            </canvas>                       
+            <div id="game-info">
+            <button onclick="intro()">Intro</button>
+            <button onclick="howToPlay()">How to Play</button>
+            </div>
+            <canvas id="gameCanvas" width="800" height="600"></canvas>
+            <script src="game.js"></script>                      
         </p>        
     </body>
 </html>
