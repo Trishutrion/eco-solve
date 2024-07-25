@@ -6,6 +6,7 @@ function impactsSurvey() {
     console.log("Survey started!")
     const display = document.getElementById('impacts')
     display.innerHTML = `
+    <br>
     On a scale of 1 to 10, how important is recycling to you? (1 = Not important, 10 = Very important) 
     <input type="number" min="1" max="10" step="0.5"><br>
     <br>
@@ -54,7 +55,9 @@ function impactsSurvey() {
     <input type="number" min="1" max="10" step="0.5"><br>
     <br>
     <br>
-    <button onclick="console.log(Survey submitted!)">Submit!</button>`
+    <button onclick="console.log(Survey submitted!)">Submit!</button> <br>
+    <br>
+    `
 };
 /** 
  * Displays the survey for environmental goal-setting on the HTML page. 
@@ -65,6 +68,7 @@ function goalSettingSurvey() {
     console.log("Survey started!")
     const display = document.getElementById('goal-setting')
     display.innerHTML = `
+    <br>
     On a scale of 1 to 10, how important is recycling to you? (1 = Not important, 10 = Very important) 
     <input type="number" min="1" max="10" step="0.5"><br>
     <br>
@@ -113,6 +117,8 @@ function goalSettingSurvey() {
     <input type="number" min="1" max="10" step="0.5"><br>
     <br>
     <br>
-    <button onclick="console.log(Survey submitted!)">Submit!</button>`
+    <button onclick="console.log(Survey submitted!)">Submit!</button> <br>
+    <br>
+    `
 };
 
