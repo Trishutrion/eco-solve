@@ -1,4 +1,5 @@
-/** Eco-Solve: Quizzes
+/** 
+ * Eco-Solve: Quizzes
  * @author: Arnav Bagal 
  * 
  * This is the quizzes page, where users can test out how good their knowledge of environmental science is. 
@@ -6,10 +7,7 @@
  * 
  * P.S. The quiz content was inspired by the study design of VCE Environmental Science. 
  */
-/** Global constants and variables 
- * @global 
- * @constant {Object} questionsAndAnswers
-*/
+// Global constants/variables
 const questionsAndAnswers = {
     1: {
         "title": "Natural Processes",
@@ -200,7 +198,8 @@ const questionsAndAnswers = {
         }
     }
 };
-/** This function starts the quiz. 
+/** 
+ * Starts the quiz. 
  * @param {number} quizNumber - The quiz number.
 */
 function startQuiz(quizNumber) {
@@ -217,7 +216,8 @@ function startQuiz(quizNumber) {
         <br>
         <button onclick="generateAndDisplayQuestion('${quizNumber}')">Begin!</button>`
 };
-/** This function generates and displays a random question for the specified quiz. 
+/** 
+ * Generates and displays a random question for the specified quiz. 
  * @param {number} quizNumber - The quiz number.
 */
 function generateAndDisplayQuestion(quizNumber) {
@@ -225,12 +225,13 @@ function generateAndDisplayQuestion(quizNumber) {
     let display = document.getElementById(`quiz${quizNumber}`);
     let questionNumber = Math.floor(Math.random() * 19 + 1); 
     display.innerHTML = `Question ${questionNumber}: ${questionsAndAnswers[quizNumber].questions[questionNumber]} <br>
-    Answer: <input type='text'; id='answer' required> <br>
+    Answer: <input type='text'; id='answer'> <br>
     <br>
     <button onclick="checkAnswer('${quizNumber}', '${questionNumber}')">Check my Answer</button>
     <br>`
 };
-/** This function checks the answer for the specified question. 
+/** 
+ * Checks the answer for the specified question. 
  * @param {number} quizNumber - The quiz number.
  * @param {number} questionNumber - The question number.
 */
@@ -238,17 +239,21 @@ function checkAnswer(quizNumber, questionNumber) {
     let submittedAnswer = document.querySelector("#answer");
     let correctAnswer = questionsAndAnswers[quizNumber].answers[questionNumber].toLowerCase();
     const display = document.getElementById(`quiz${quizNumber}`);
-    if (correctAnswer.toLowerCase().includes(submittedAnswer.value.toLowerCase())) {
-        console.log("Answer checked (correct)!")
-        display.innerHTML = display.innerHTML.replace(`<button onclick="checkAnswer('${quizNumber}', '${questionNumber}')">Check my Answer</button>`,
-        `Congratulations! You are correct! <br> <br> <button onclick="generateAndDisplayQuestion('${quizNumber}')">Next Question</button>`);         
+    if (submittedAnswer.value.length != 0) {
+        if (correctAnswer.toLowerCase().includes(submittedAnswer.value.toLowerCase())) {
+            console.log("Answer checked (correct)!")
+            display.innerHTML = display.innerHTML.replace(`<button onclick="checkAnswer('${quizNumber}', '${questionNumber}')">Check my Answer</button>`,
+            `Congratulations! You are correct! <br> <br> <button onclick="generateAndDisplayQuestion('${quizNumber}')">Next Question</button>`);         
+        } else {
+            console.log("Answer checked (incorrect)!")
+            display.innerHTML = display.innerHTML.replace(
+                `<button onclick="checkAnswer('${quizNumber}', '${questionNumber}')">Check my Answer</button>`,
+                `Oops! You are incorrect! (Correct answer: ${questionsAndAnswers[quizNumber].answers[questionNumber]}) <br> 
+                <br>
+                <button onclick="generateAndDisplayQuestion('${quizNumber}')">Next Question</button>`
+            );
+        };
     } else {
-        console.log("Answer checked (incorrect)!")
-        display.innerHTML = display.innerHTML.replace(
-            `<button onclick="checkAnswer('${quizNumber}', '${questionNumber}')">Check my Answer</button>`,
-            `Oops! You are incorrect! (Correct answer: ${questionsAndAnswers[quizNumber].answers[questionNumber]}) <br> 
-            <br>
-            <button onclick="generateAndDisplayQuestion('${quizNumber}')">Next Question</button>`
-        );
-    }
+        alert("Please enter an answer before checking!");
+    };    
 };
