@@ -25,7 +25,15 @@
             Eco-Solve is an environmental education website where users can learn more about the environment and make more sustainable choices. <br>
             To do this, users can watch videos, take quizzes, play games, and even set their own personal goals. <br>
             <br>
-            <div id="box" style="background-color: #77ff77;">
+            <div id="box" style="background-color: #77ff77; max-width: 1000px;">
+                <script src="species.js"></script>
+                <h2>Today's Endangered Species: <u><div id="species-name"><script>displaySpecies()</script></div></u></h2> 
+                
+                <button onclick="window.open(getRandomSpeciesURL(), '_blank')">Learn More</button> <br>
+                <br>
+            </div> <br>
+            <br>
+            <div id="box" style="background-color: #44ff44;">
                 <h2>Webpages</h2>
                 <a href="video.html"><h3>Videos</h3></a> 
                 The <a href="video.html">videos</a> page of Eco-Solve is for all visual learners wanting to learn more about the environment. <br>
@@ -54,7 +62,7 @@
                 We value privacy at Eco-Solve, so your data is stored in a .csv file and is not accessible to anyone else (even us, for that matter).
             </div> <br>
             <br>
-            <div id="box" style="background-color: #44ff44;">
+            <div id="box" style="background-color: #11ff11;">
                 <h2>Contacts/Further Sites</h2>
                 <h3>Contact Information</h3>
                 Email: <a href="https://mail.google.com/mail/?view=cm&fs=1&to=arnavbagal1@gmail.com&su=Feedback for Eco-Solve""; target="_blank">
@@ -66,7 +74,7 @@
                 <a href="https://www.vcaa.vic.edu.au/curriculum/vce/vce-study-designs/environmentalscience/Pages/Index.aspx"; target="_blank">VCE Environmental Science Study Design</a> <br>
                 <br>
                 <a href="https://www.w3schools.com/"; target="_blank">w3schools (for learning how to code)</a> <br>
-            </div>                       
+            </div>                                 
         </p>    
     </body>
 </html>

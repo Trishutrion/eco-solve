@@ -18,7 +18,7 @@ const questionsAndAnswers = {
             4: "What is the name for a cloud that touches the ground?",
             5: "What are measured with the Fujita Scale?",
             6: "Which body of water is around 34% salt and virtually impossible to swim in?",
-            7: "What is the only 'living' organism that can be viewed from space?",
+            7: "The Great Barrier Reef can be viewed from the Moon - True or False?",
             8: "What has a nucleus, a coma, a dust tail, and an ion tail?",
             9: "Long periods without rain are called what?",
             10: "What happens when the moon passes between the sun and the Earth?",
@@ -30,7 +30,7 @@ const questionsAndAnswers = {
             16: "Which natural phenomenon occurs when warm air rises and cooler air sinks?",
             17: "What is the process of converting nitrogen gas from the atmosphere into a form usable by plants?",
             18: "What is the name for the movement of ocean water caused by wind patterns and the rotation of the Earth?",
-            19: "Water vapor (H₂O) is responsible for the greenhouse effect and helps regulate Earth's temperature - True or False?",
+            19: "Water vapor (H₂O) contributes to the greenhouse effect - True or False?",
             20: "What is the term for the gradual change in species composition in an ecosystem over time?"
         },
         "answers": {
@@ -40,7 +40,7 @@ const questionsAndAnswers = {
             4: "Fog",
             5: "Tornadoes",
             6: "Dead Sea",
-            7: "Great Barrier Reef",
+            7: "True",
             8: "Comet",
             9: "Droughts",
             10: "Solar Eclipse",
