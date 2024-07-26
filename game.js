@@ -1,18 +1,5 @@
-/**
- * Eco-Solve: Games (Backend)
- * @file game.js
- * @summary This file contains all of the backend code for the games page of Eco-Solve. It includes essential functions for running the Eco-Quest game, such as the introductory function, how to play function, and the main game state function. The purpose of this file is to manage the game logic and state, providing a seamless and interactive gaming experience for users.
- * @description This file is part of the Eco-Solve project, aimed at engaging users in environmental challenges through interactive games. It serves as the backbone for the Eco-Quest game, handling game initialization, user interactions, and the overall flow of the game.
- * @author Arnav Bagal
- */
-// Global constants
 const canvas = document.getElementById('canvas');
 const ctx = canvas.getContext('2d');
-/**
- * @summary Runs the introductory state for Eco-Quest. 
- * @description This function serves as the introduction to the Eco-Quest game. It provides tanks with a brief overview of the game's backstory, objectives, and key mechanics. The function is designed to set the stage for the tank's adventure, offering context and motivation for the challenges ahead.
- * @returns {void} Does not return anything. It outputs the introductory text directly to the game canvas.
- */
 function intro() {    
     let running = true;
     if (running) {
@@ -53,11 +40,6 @@ function intro() {
         requestAnimationFrame(intro);
     };  
 };
-/**
- * @summary Runs the instructions state for Eco-Quest.
- * @description This function provides tanks with instructions on how to play Eco-Quest. It outlines the controls, objectives, and any special rules or mechanics specific to the game. The purpose of this function is to ensure that tanks understand the gameplay mechanics and what is required to progress and succeed in Eco-Quest.
- * @returns {void} Does not return anything. It ctxs the instructions directly to the console or game interface.
- */
 function howToPlay() {
     let running = true;
     if (running) {
@@ -100,11 +82,6 @@ function howToPlay() {
         requestAnimationFrame(intro);
     };
 };
-/**
- * @summary Runs the main game state for Eco-Quest.
- * @description This function is the main game state for Eco-Quest. It controls the flow of the game, including initializing the game state, handling tank inputs, updating the game state based on tank actions and game rules, and rendering the game state to the tank. This function is called after the introductory and instruction functions have been ctxed to the tank, and it runs continuously until the game ends, either through completion of the game's objectives or if the tank fails to meet certain conditions.
- * @returns {void} Does not return anything. It keeps the game running in a state, updating and rendering the game state until the game concludes.
- */
 function game() {
     // Game objects
     const ground = new function () {
