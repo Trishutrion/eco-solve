@@ -1,151 +1,282 @@
-const canvas = document.getElementById('gameCanvas');
+/**
+ * Eco-Solve: Games (Backend)
+ * @file game.js
+ * @summary This file contains all of the backend code for the games page of Eco-Solve. It includes essential functions for running the Eco-Quest game, such as the introductory function, how to play function, and the main game state function. The purpose of this file is to manage the game logic and state, providing a seamless and interactive gaming experience for users.
+ * @description This file is part of the Eco-Solve project, aimed at engaging users in environmental challenges through interactive games. It serves as the backbone for the Eco-Quest game, handling game initialization, user interactions, and the overall flow of the game.
+ * @author Arnav Bagal
+ */
+// Global constants
+const canvas = document.getElementById('canvas');
 const ctx = canvas.getContext('2d');
-const vatWidth = 100;
-const vatHeight = 20;
-let vatX, vatY, rightPressed, leftPressed, score, timeLeft, gameRunning, aliens;
-
-function initializeGame() {
-  vatX = (canvas.width - vatWidth) / 2;
-  vatY = canvas.height - vatHeight - 10;
-  rightPressed = false;
-  leftPressed = false;
-  score = 0;
-  timeLeft = 60;
-  gameRunning = false;
-  aliens = [];
-}
-
-class Alien {
-  constructor(x, y) {
-    this.x = x;
-    this.y = y;
-    this.radius = 10;
-  }
-
-  draw() {
-    ctx.beginPath();
-    ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
-    ctx.fillStyle = "red";
-    ctx.fill();
-    ctx.closePath();
-  }
-
-  update() {
-    this.y += 2;
-  }
-}
-
-function drawVat() {
-  ctx.beginPath();
-  ctx.rect(vatX, vatY, vatWidth, vatHeight);
-  ctx.fillStyle = "blue";
-  ctx.fill();
-  ctx.closePath();
-}
-
-function drawAliens() {
-  aliens.forEach(alien => alien.draw());
-}
-
-function updateAliens() {
-  aliens.forEach(alien => alien.update());
-}
-
-function detectCollisions() {
-  for (let i = aliens.length - 1; i >= 0; i--) {
-    if (aliens[i].y + aliens[i].radius > vatY &&
-        aliens[i].x > vatX &&
-        aliens[i].x < vatX + vatWidth) {
-      aliens.splice(i, 1);
-      score++;
-    } else if (aliens[i].y - aliens[i].radius > canvas.height) {
-      aliens.splice(i, 1);
-    }
-  }
-}
-
-function drawScoreAndTimer() {
-  ctx.font = "24px Arial";
-  ctx.fillStyle = "black";
-  ctx.fillText(`Score: ${score}`, 10, 30);
-  ctx.fillText(`Time Left: ${timeLeft}`, canvas.width - 150, 30);
-}
-
-function draw() {
-  if (!gameRunning) return;
-  ctx.clearRect(0, 0, canvas.width, canvas.height);
-  drawVat();
-  drawAliens();
-  detectCollisions();
-  updateAliens();
-  drawScoreAndTimer();
-
-  if (rightPressed && vatX < canvas.width - vatWidth) {
-    vatX += 7;
-  }
-  if (leftPressed && vatX > 0) {
-    vatX -= 7;
-  }
-
-  requestAnimationFrame(draw);
-}
-
-function keyDownHandler(e) {
-  if (e.key === 'Right' || e.key === 'ArrowRight') {
-    rightPressed = true;
-  } else if (e.key === 'Left' || e.key === 'ArrowLeft') {
-    leftPressed = true;
-  }
-}
-
-function keyUpHandler(e) {
-  if (e.key === 'Right' || e.key === 'ArrowRight') {
-    rightPressed = false;
-  } else if (e.key === 'Left' || e.key === 'ArrowLeft') {
-    leftPressed = false;
-  }
-}
-
-function spawnAlien() {
-  if (gameRunning) {
-    const x = Math.random() * (canvas.width - 20) + 10;
-    const y = -10;
-    aliens.push(new Alien(x, y));
-  }
-}
-
-function updateTimer() {
-  if (gameRunning && timeLeft > 0) {
-    timeLeft--;
-  } else if (timeLeft === 0) {
-    alert(`Game over! Your score is ${score}`);
-    gameRunning = false;
-  }
-}
-
-function intro() {
-  alert("Eco-Quest: Part 1\n\nAn environmental disaster has occurred! Water-soluble aliens (red circles) have made their way into rain clouds and are now digging holes deep into the surface of the earth, causing massive erosion in the process. Fortunately, your team of scientists has found that these aliens cannot tolerate living in environments containing hydrochloric acid. You create a large vat (blue rectangle) that contains highly concentrated hydrochloric acid, and set out on your way. Your job is to collect as many aliens as possible in 60 seconds. Good luck!");
-}
-
+/**
+ * @summary Runs the introductory state for Eco-Quest. 
+ * @description This function serves as the introduction to the Eco-Quest game. It provides tanks with a brief overview of the game's backstory, objectives, and key mechanics. The function is designed to set the stage for the tank's adventure, offering context and motivation for the challenges ahead.
+ * @returns {void} Does not return anything. It outputs the introductory text directly to the game canvas.
+ */
+function intro() {    
+    let running = true;
+    if (running) {
+        // Event handling: Key presses
+        document.addEventListener('keydown', function(event) {
+            if (event.key === ' ') { // Spacebar to begin game
+                game();
+            } else if (event.key === 'h') { // H to see how to play
+                howToPlay();
+            };
+        });
+        // Clear the canvas
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        // ctx text on screen 
+        ctx.fillStyle = 'black';
+        var fontSize = 50;
+        ctx.font = `${fontSize}px Arial`
+        ctx.fillText(text = "Eco-Quest",
+            x = (canvas.width - ctx.measureText(text).width) / 2,
+            y = (canvas.height - fontSize) / 2
+        );
+        fontSize = 30;
+        ctx.font = `${fontSize}px Arial`
+        ctx.fillText(text = "brought to you by Eco-Solve",
+            x = (canvas.width - ctx.measureText(text).width) / 2,
+            y += fontSize
+        );
+        fontSize = 20;
+        ctx.font = `${fontSize}px Arial`
+        ctx.fillText(text = "Press SPACE to begin!",
+            x = (canvas.width - ctx.measureText(text).width) / 2,
+            y = canvas.height - 2 * fontSize
+        );
+        ctx.fillText(text = "Press H to see how to play",
+            x = (canvas.width - ctx.measureText(text).width) / 2,
+            y = canvas.height - fontSize
+        );
+        requestAnimationFrame(intro);
+    };  
+};
+/**
+ * @summary Runs the instructions state for Eco-Quest.
+ * @description This function provides tanks with instructions on how to play Eco-Quest. It outlines the controls, objectives, and any special rules or mechanics specific to the game. The purpose of this function is to ensure that tanks understand the gameplay mechanics and what is required to progress and succeed in Eco-Quest.
+ * @returns {void} Does not return anything. It ctxs the instructions directly to the console or game interface.
+ */
 function howToPlay() {
-  alert("How to Play:\n\n- Use the arrow keys to move the vat left and right.\n- Catch the falling red aliens in the vat to score points.\n- You have 60 seconds to catch as many aliens as possible.\n- The game ends when the timer reaches zero.");
-}
+    let running = true;
+    if (running) {
+        // Event handling: Key presses
+        document.addEventListener('keydown', function(event) {
+            if (event.key === ' ') { // Spacebar to begin game
+                game();
+                running = false;
+            } else if (event.key === 'b') { // H to see how to play
+                intro();
+                running = false;
+            };
+        });
+        // Clear the canvas
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        // ctx text on screen 
+        ctx.fillStyle = 'black';
+        var fontSize = 50;
+        ctx.font = `${fontSize}px Arial`
+        ctx.fillText(text = "How to Play",
+            x = (canvas.width - ctx.measureText(text).width) / 2,
+            y = (canvas.height - fontSize) / 2
+        );
+        fontSize = 30;
+        ctx.font = `${fontSize}px Arial`
+        ctx.fillText(text = "brought to you by Eco-Solve",
+            x = (canvas.width - ctx.measureText(text).width) / 2,
+            y += fontSize
+        );
+        fontSize = 20;
+        ctx.font = `${fontSize}px Arial`
+        ctx.fillText(text = "Press SPACE to begin!",
+            x = (canvas.width - ctx.measureText(text).width) / 2,
+            y = canvas.height - 2 * fontSize
+        );
+        ctx.fillText(text = "Press H to see how to play",
+            x = (canvas.width - ctx.measureText(text).width) / 2,
+            y = canvas.height - fontSize
+        );
+        requestAnimationFrame(intro);
+    };
+};
+/**
+ * @summary Runs the main game state for Eco-Quest.
+ * @description This function is the main game state for Eco-Quest. It controls the flow of the game, including initializing the game state, handling tank inputs, updating the game state based on tank actions and game rules, and rendering the game state to the tank. This function is called after the introductory and instruction functions have been ctxed to the tank, and it runs continuously until the game ends, either through completion of the game's objectives or if the tank fails to meet certain conditions.
+ * @returns {void} Does not return anything. It keeps the game running in a state, updating and rendering the game state until the game concludes.
+ */
+function game() {
+    // Game objects
+    const ground = new function () {
+        this.width = canvas.width;
+        this.height = 20;
+        this.x = 0;
+        this.y = canvas.height - this.height;
+    };
+    const vat = new function () {
+        this.width = 400;
+        this.height = 200;
+        this.x = (canvas.width - this.width) / 2;
+        this.y = canvas.height - this.height - ground.height;
+        this.speed = 10;
+    };
+    const alien = new function () {
+        this.radius = 10;
+        this.x = Math.random() * (canvas.width - this.radius);
+        this.y = -this.radius;
+        this.speed = 5;
+    };    
+    // Scoring variables
+    let timeLeft = 60;
+    let score = 0;
 
-function startGame() {
-  initializeGame();
-  gameRunning = true;
-  draw();
-  setInterval(spawnAlien, 1000);
-  setInterval(updateTimer, 1000);
-}
+    // Constants
+    const playerWidth = 50;
+    const playerHeight = 80;
+    const enemyMinRadius = 5;
+    const enemyMaxRadius = 30;
+    const enemySpeed = 5;
 
-function restartGame() {
-  initializeGame();
-  startGame();
-}
+    // Game variables
+    let playerX = canvas.width / 2 - playerWidth / 2;
+    let playerY = canvas.height - playerHeight - 20;
+    let hp = 50;
+    let isGameOver = false;
+    let startTime = null;
+    let elapsedTime = 0;
+    let highScore = localStorage.getItem('highScore') || 0;
 
-document.addEventListener('keydown', keyDownHandler, false);
-document.addEventListener('keyup', keyUpHandler, false);
+    // Helper function to generate random enemy Radius
+    function getRandomenemyRadius() {
+        return Math.floor(Math.random() * (enemyMaxRadius - enemyMinRadius)) *2;
+    }
 
-initializeGame();
-startGame();
+    // Helper function to check collision between two rectangles
+    function checkCollision(rect1, rect2) {
+        return rect1.x < rect2.x + rect2.width &&
+                rect1.x + rect1.width > rect2.x &&
+                rect1.y < rect2.y + rect2.height &&
+                rect1.y + rect1.height > rect2.y;
+    }
+
+    // Game loop
+    function gameLoop(timestamp) {
+        if (!isGameOver) {
+            // Calculate elapsed time
+            if (!startTime) {
+                startTime = timestamp;
+            }
+            elapsedTime = Math.floor((timestamp - startTime) / 1000);
+
+            // Clear the canvas
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+            // Make the sky blue
+            ctx.fillStyle = 'lightblue';
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+            //Draw the ground 
+            ctx.fillStyle = '#355e3b';
+            ctx.fillRect(canvas.width-800, canvas.height-20, canvas.width, 20);
+
+            // Draw the player
+            ctx.fillStyle = '#007bff';
+            ctx.fillRect(playerX, playerY, playerWidth, playerHeight);
+
+            // Move the enemy
+            enemyY += enemySpeed;
+
+            // Ensure the player stays within the screen boundaries
+            if (playerX < 0) {
+                playerX = 0;
+            } else if (playerX + playerWidth > canvas.width) {
+                playerX = canvas.width - playerWidth;
+            }
+
+            // Check if enemy hits the player
+            if (checkCollision({ x: playerX, y: playerY, width: playerWidth, height: playerHeight },
+                                { x: enemyX, y: enemyY, width: enemyRadius, height: enemyRadius })) {
+                const damage = enemyRadius; // Damage is proportional to enemy Radius
+                hp -= damage;
+                if (hp <= 0) {
+                    isGameOver = true;
+                    if (elapsedTime > highScore) {
+                        highScore = elapsedTime;
+                        localStorage.setItem('highScore', highScore);
+                    }
+                }
+                enemyY = -enemyRadius;
+                enemyX = Math.random() * (canvas.width - enemyRadius);
+                enemyRadius = getRandomenemyRadius();
+            }
+
+            // Respawn enemy when it touches the ground
+            if (enemyY >= canvas.height-20) {
+                enemyY = -enemyRadius;
+                enemyX = Math.random() * (canvas.width - enemyRadius);
+                enemyRadius = getRandomenemyRadius();
+            }
+
+            // Draw the enemy
+            ctx.fillStyle = '#ff0000';
+            ctx.beginPath();
+            ctx.arc(enemyX, enemyY, enemyRadius, 0, Math.PI * 2);
+            ctx.fill();
+
+            // Draw HP
+            ctx.font = '20px Arial';
+            ctx.fillStyle = '#ff0000';
+            ctx.fillText(`HP: ${hp}`, 10, 40);
+
+            // Draw elapsed time and high score
+            ctx.fillStyle = '#000000';
+            ctx.fillText(`Time: ${elapsedTime} seconds`, 10, 70);
+            ctx.fillText(`High Score: ${highScore} seconds`, 10, 100);
+
+            requestAnimationFrame(gameLoop);
+        } else {
+            // Game over, ctx restart message
+            ctx.font = '30px Arial';
+            ctx.fillStyle = '#ff0000';
+            ctx.fillText('Game Over! Press Space to Restart', 200, 200);
+        }
+    }
+
+    // Event listener for player movement
+    document.addEventListener('keydown', function(event) {
+        if (!isGameOver) {
+            if (event.key === 'ArrowLeft') {
+                playerX -= 10;
+            } 
+            else if (event.key === 'a') {
+                playerX -= 10;
+            }
+            else if (event.key === 'ArrowRight') {
+                playerX += 10;
+            }
+            else if (event.key === 'd') {
+                playerX += 10;
+            }
+        } else if (event.key === ' ' && isGameOver) {
+            // Restart the game if space is pressed
+            hp = 50;
+            isGameOver = false;
+            startTime = null;
+            elapsedTime = 0;
+            playerX = canvas.width / 2 - playerWidth / 2;
+            playerY = canvas.height - playerHeight - 20;
+            enemyX = Math.random() * (canvas.width - enemyRadius);
+            enemyY = -enemyRadius;
+            enemyRadius = getRandomenemyRadius();
+            gameLoop();
+        }
+    });
+
+    // Initial setup
+    let enemyRadius = getRandomenemyRadius();
+    let enemyX = Math.random() * (canvas.width - enemyRadius);
+    let enemyY = -enemyRadius;
+    gameLoop();
+};
+// Start the game
+intro(); 
