@@ -79,7 +79,7 @@ function howToPlay() {
             x = (canvas.width - ctx.measureText(text).width) / 2,
             y = canvas.height - fontSize
         );
-        requestAnimationFrame(intro);
+        requestAnimationFrame(howToPlay);
     };
 };
 function game() {
