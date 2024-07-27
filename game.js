@@ -35,7 +35,7 @@ function intro() {
         );
         ctx.fillText(text = "Press H to see how to play",
             x = (canvas.width - ctx.measureText(text).width) / 2,
-            y = canvas.height - fontSize
+            y += fontSize
         );
         requestAnimationFrame(intro);
     };  
