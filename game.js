@@ -180,6 +180,7 @@ function game() {
                 const damage = enemyRadius; // Damage is proportional to enemy Radius
                 hp -= damage;
                 if (hp <= 0) {
+                    hp = 0;
                     isGameOver = true;
                     if (elapsedTime > highScore) {
                         highScore = elapsedTime;
@@ -219,8 +220,7 @@ function game() {
             // Game over, ctx restart message
             ctx.font = '30px Arial';
             ctx.fillStyle = '#ff0000';
-            ctx.fillText('Game Over! Press Space to Restart', 200, 200);
-            isGameOver = true;
+            ctx.fillText('Game Over! Press Space to Restart', 200, 200);            
         }
     }
 
