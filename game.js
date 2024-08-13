@@ -1,5 +1,7 @@
+/** */
 const canvas = document.getElementById('canvas');
 const ctx = canvas.getContext('2d');
+/** */
 function intro() {    
     let running = true;
     if (running) {
@@ -40,6 +42,7 @@ function intro() {
         requestAnimationFrame(intro);
     };  
 };
+/** */
 function howToPlay() {
     let running = true;
     if (running) {
@@ -80,6 +83,7 @@ function howToPlay() {
         requestAnimationFrame(howToPlay);
     };
 };
+/** */
 function game() {
     // Game objects
     const ground = new function () {
@@ -216,12 +220,13 @@ function game() {
             ctx.font = '30px Arial';
             ctx.fillStyle = '#ff0000';
             ctx.fillText('Game Over! Press Space to Restart', 200, 200);
+            isGameOver = true;
         }
     }
 
     // Event listener for player movement
     document.addEventListener('keydown', function(event) {
-        if (!isGameOver) {
+        if (!isgameOver) {
             if (event.key === 'ArrowLeft') {
                 playerX -= 10;
             } 
