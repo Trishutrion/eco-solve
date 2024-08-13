@@ -47,10 +47,8 @@ function howToPlay() {
         document.addEventListener('keydown', function(event) {
             if (event.key === ' ') { // Spacebar to begin game
                 game();
-                running = false;
             } else if (event.key === 'b') { // H to see how to play
                 intro();
-                running = false;
             };
         });
         // Clear the canvas
@@ -61,9 +59,9 @@ function howToPlay() {
         ctx.font = `${fontSize}px Arial`
         ctx.fillText(text = "How to Play",
             x = (canvas.width - ctx.measureText(text).width) / 2,
-            y = (canvas.height - fontSize) / 2
+            y = 0
         );
-        fontSize = 30;
+        fontSize = 20;
         ctx.font = `${fontSize}px Arial`
         ctx.fillText(text = "brought to you by Eco-Solve",
             x = (canvas.width - ctx.measureText(text).width) / 2,
@@ -97,6 +95,7 @@ function game() {
         this.y = canvas.height - this.height - ground.height;
         this.speed = 10;
     };
+    
     const alien = new function () {
         this.radius = 10;
         this.x = Math.random() * (canvas.width - this.radius);
@@ -105,6 +104,7 @@ function game() {
     };    
     // Scoring variables
     let timeLeft = 60;
+    let startTime = timestamp;
     let score = 0;
 
     // Constants
