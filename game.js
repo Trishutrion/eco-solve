@@ -1,42 +1,50 @@
 /** */
-const canvas = document.getElementById('canvas');
-const ctx = canvas.getContext('2d');
+// Global constants
+const canvas = document.getElementById('canvas'); 
+const display = canvas.getContext('2d');
+// Global variables
+void(0);
 /** */
-function intro() {    
+function intro() {  
+    // Initial loop variables  
     let running = true;
     if (running) {
         // Event handling: Key presses
         document.addEventListener('keydown', function(event) {
             if (event.key === ' ') { // Spacebar to begin game
                 game();
+                running = false;
             } else if (event.key === 'h') { // H to see how to play
                 howToPlay();
+                running = false;
             };
         });
         // Clear the canvas
-        ctx.clearRect(0, 0, canvas.width, canvas.height);
-        // ctx text on screen 
-        ctx.fillStyle = 'black';
+        display.clearRect(0, 0, canvas.width, canvas.height);
+        // Rendering game elements: Shapes
+        void(0);
+        // Rendering game elements: Text 
+        display.fillStyle = 'black';
         var fontSize = 50;
-        ctx.font = `${fontSize}px Arial`
-        ctx.fillText(text = "Eco-Quest",
-            x = (canvas.width - ctx.measureText(text).width) / 2,
+        display.font = `${fontSize}px Arial`
+        display.fillText(text = "Eco-Quest",
+            x = (canvas.width - display.measureText(text).width) / 2,
             y = (canvas.height - fontSize) / 2
         );
         fontSize = 30;
-        ctx.font = `${fontSize}px Arial`
-        ctx.fillText(text = "brought to you by Eco-Solve",
-            x = (canvas.width - ctx.measureText(text).width) / 2,
+        display.font = `${fontSize}px Arial`
+        display.fillText(text = "brought to you by Eco-Solve",
+            x = (canvas.width - display.measureText(text).width) / 2,
             y += fontSize
         );
         fontSize = 20;
-        ctx.font = `${fontSize}px Arial`
-        ctx.fillText(text = "Press SPACE to begin!",
-            x = (canvas.width - ctx.measureText(text).width) / 2,
+        display.font = `${fontSize}px Arial`
+        display.fillText(text = "Press SPACE to begin!",
+            x = (canvas.width - display.measureText(text).width) / 2,
             y = canvas.height - 2 * fontSize
         );
-        ctx.fillText(text = "Press H to see how to play",
-            x = (canvas.width - ctx.measureText(text).width) / 2,
+        display.fillText(text = "Press H to see how to play",
+            x = (canvas.width - display.measureText(text).width) / 2,
             y += fontSize
         );
         requestAnimationFrame(intro);
@@ -55,29 +63,29 @@ function howToPlay() {
             };
         });
         // Clear the canvas
-        ctx.clearRect(0, 0, canvas.width, canvas.height);
-        // ctx text on screen 
-        ctx.fillStyle = 'black';
+        display.clearRect(0, 0, canvas.width, canvas.height);
+        // display text on screen 
+        display.fillStyle = 'black';
         var fontSize = 50;
-        ctx.font = `${fontSize}px Arial`
-        ctx.fillText(text = "How to Play",
-            x = (canvas.width - ctx.measureText(text).width) / 2,
+        display.font = `${fontSize}px Arial`
+        display.fillText(text = "How to Play",
+            x = (canvas.width - display.measureText(text).width) / 2,
             y = 0
         );
         fontSize = 20;
-        ctx.font = `${fontSize}px Arial`
-        ctx.fillText(text = "brought to you by Eco-Solve",
-            x = (canvas.width - ctx.measureText(text).width) / 2,
+        display.font = `${fontSize}px Arial`
+        display.fillText(text = "brought to you by Eco-Solve",
+            x = (canvas.width - display.measureText(text).width) / 2,
             y += fontSize
         );
         fontSize = 20;
-        ctx.font = `${fontSize}px Arial`
-        ctx.fillText(text = "Press SPACE to begin!",
-            x = (canvas.width - ctx.measureText(text).width) / 2,
+        display.font = `${fontSize}px Arial`
+        display.fillText(text = "Press SPACE to begin!",
+            x = (canvas.width - display.measureText(text).width) / 2,
             y = canvas.height - 2 * fontSize
         );
-        ctx.fillText(text = "Press H to see how to play",
-            x = (canvas.width - ctx.measureText(text).width) / 2,
+        display.fillText(text = "Press H to see how to play",
+            x = (canvas.width - display.measureText(text).width) / 2,
             y = canvas.height - fontSize
         );
         requestAnimationFrame(howToPlay);
@@ -150,19 +158,19 @@ function game() {
             elapsedTime = Math.floor((timestamp - startTime) / 1000);
 
             // Clear the canvas
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            display.clearRect(0, 0, canvas.width, canvas.height);
 
             // Make the sky blue
-            ctx.fillStyle = 'lightblue';
-            ctx.fillRect(0, 0, canvas.width, canvas.height);
+            display.fillStyle = 'lightblue';
+            display.fillRect(0, 0, canvas.width, canvas.height);
 
             //Draw the ground 
-            ctx.fillStyle = '#355e3b';
-            ctx.fillRect(canvas.width-800, canvas.height-20, canvas.width, 20);
+            display.fillStyle = '#355e3b';
+            display.fillRect(canvas.width-800, canvas.height-20, canvas.width, 20);
 
             // Draw the player
-            ctx.fillStyle = '#007bff';
-            ctx.fillRect(playerX, playerY, playerWidth, playerHeight);
+            display.fillStyle = '#007bff';
+            display.fillRect(playerX, playerY, playerWidth, playerHeight);
 
             // Move the enemy
             enemyY += enemySpeed;
@@ -200,27 +208,27 @@ function game() {
             }
 
             // Draw the enemy
-            ctx.fillStyle = '#ff0000';
-            ctx.beginPath();
-            ctx.arc(enemyX, enemyY, enemyRadius, 0, Math.PI * 2);
-            ctx.fill();
+            display.fillStyle = '#ff0000';
+            display.beginPath();
+            display.arc(enemyX, enemyY, enemyRadius, 0, Math.PI * 2);
+            display.fill();
 
             // Draw HP
-            ctx.font = '20px Arial';
-            ctx.fillStyle = '#ff0000';
-            ctx.fillText(`HP: ${hp}`, 10, 40);
+            display.font = '20px Arial';
+            display.fillStyle = '#ff0000';
+            display.fillText(`HP: ${hp}`, 10, 40);
 
             // Draw elapsed time and high score
-            ctx.fillStyle = '#000000';
-            ctx.fillText(`Time: ${elapsedTime} seconds`, 10, 70);
-            ctx.fillText(`High Score: ${highScore} seconds`, 10, 100);
+            display.fillStyle = '#000000';
+            display.fillText(`Time: ${elapsedTime} seconds`, 10, 70);
+            display.fillText(`High Score: ${highScore} seconds`, 10, 100);
 
             requestAnimationFrame(gameLoop);
         } else {
-            // Game over, ctx restart message
-            ctx.font = '30px Arial';
-            ctx.fillStyle = '#ff0000';
-            ctx.fillText('Game Over! Press Space to Restart', 200, 200);            
+            // Game over, display restart message
+            display.font = '30px Arial';
+            display.fillStyle = '#ff0000';
+            display.fillText('Game Over! Press Space to Restart', 200, 200);            
         }
     }
 
