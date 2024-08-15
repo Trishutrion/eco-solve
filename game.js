@@ -116,7 +116,6 @@ function game() {
     };    
     // Scoring variables
     let timeLeft = 60;
-    let startTime = timestamp;
     let score = 0;
 
     // Constants
