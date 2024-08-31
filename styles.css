@@ -2,14 +2,14 @@
 body {
     font-family: Arial, Helvetica, sans-serif;
     text-align: center; 
-    background-color: lightseagreen ;
-    color: white;   
+    background-color: aqua ;  
 }
 canvas {
     border: 1px solid black;
+    background-color: white;
 }
 #navbar {
-    background-color: seagreen;
+    background-color: aquamarine;
     width: 70%;
     height: 50px;
     align-items: center;
@@ -21,6 +21,6 @@ canvas {
     text-align: center;
     border: 1px solid white;
     width: 800px;
-    background-color: darkseagreen;
+    background-color: greenyellow;
     color: black;
 }
