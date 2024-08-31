@@ -228,7 +228,8 @@ function generateAndDisplayQuestion(quizNumber) {
     Question ${questionNumber}: ${questionsAndAnswers[quizNumber].questions[questionNumber]} <br>
     Answer: <input type='text'; spellcheck="true"; id='answer'> <br>
     <br>
-    <button onclick="checkAnswer('${quizNumber}', '${questionNumber}')">Check my Answer</button> <br>
+    <button onclick="checkAnswer('${quizNumber}', '${questionNumber}')">Check my Answer</button> 
+    <button onclick="startQuiz('${quizNumber}')">Exit the quiz</button> <br>
     `   
     document.getElementById("answer").focus();
     document.getElementById("answer").select(); 
