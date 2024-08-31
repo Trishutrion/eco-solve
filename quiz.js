@@ -210,7 +210,7 @@ function startQuiz(quizNumber) {
         and/or short-answer questions. <br>
         <br>
         After you answer the question, you can check it using the 'Check my Answer' button. <br>
-        Your total score will be tracked and at the end of thequiz, you will know your total score. <br>
+        Your total score will be tracked and at the end of the quiz, you will know your total score. <br>
         <br>
         Enjoy!<br>
         <br>
