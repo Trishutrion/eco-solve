@@ -2,11 +2,8 @@
 // Global constants
 const canvas = document.getElementById('canvas'); 
 const display = canvas.getContext('2d');
-// Global variables
-void(0);
 /** */
 function intro() {  
-    // Initial loop variables  
     let running = true;
     if (running) {
         // Event handling: Key presses
@@ -21,8 +18,6 @@ function intro() {
         });
         // Clear the canvas
         display.clearRect(0, 0, canvas.width, canvas.height);
-        // Rendering game elements: Shapes
-        void(0);
         // Rendering game elements: Text 
         display.fillStyle = 'black';
         var fontSize = 50;

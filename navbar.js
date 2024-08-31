@@ -5,7 +5,7 @@ function loadNavigationBar() {
     <a href="video.html"><button style="width: 120px;">Videos</button></a>
     <a href="quiz.html"><button style="width: 120px;">Quizzes</button></a>
     <a href="game.html"><button style="width: 120px;">Games</button></a>
-    <a href="tracker.html"><button style="width: 120px;">Personal Tracker</button></a>`
-    
+    <a href="tracker.html"><button style="width: 120px;">Personal Tracker</button></a>
+    `
 };
 loadNavigationBar();

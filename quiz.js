@@ -220,15 +220,28 @@ function startQuiz(quizNumber) {
  * Generates and displays a random question for the specified quiz. 
  * @param {number} quizNumber - The quiz number.
 */
-function generateAndDisplayQuestion(quizNumber) {
+function generateAndDisplayQuestion(quizNumber) {   
     console.log(`Question displayed!`)
     let display = document.getElementById(`quiz${quizNumber}`);
     let questionNumber = Math.floor(Math.random() * 19 + 1); 
-    display.innerHTML = `Question ${questionNumber}: ${questionsAndAnswers[quizNumber].questions[questionNumber]} <br>
-    Answer: <input type='text'; id='answer'> <br>
+    display.innerHTML = `
+    Question ${questionNumber}: ${questionsAndAnswers[quizNumber].questions[questionNumber]} <br>
+    Answer: <input type='text'; spellcheck="true"; id='answer'> <br>
     <br>
-    <button onclick="checkAnswer('${quizNumber}', '${questionNumber}')">Check my Answer</button>
-    <br>`
+    <button onclick="checkAnswer('${quizNumber}', '${questionNumber}')">Check my Answer</button> <br>
+    `   
+    document.getElementById("answer").focus();
+    document.getElementById("answer").select(); 
+    document.getElementById("answer").addEventListener("keyup", 
+        function(event) {
+            if (event.key === "Enter") {
+                // Prevent the default action (form submission, etc.)
+                event.preventDefault();
+                // Trigger the button click
+                checkAnswer(quizNumber, questionNumber);
+            };
+        }
+    );    
 };
 /** 
  * Checks the answer for the specified question. 
@@ -242,18 +255,46 @@ function checkAnswer(quizNumber, questionNumber) {
     if (submittedAnswer.value.length != 0) {
         if (correctAnswer.toLowerCase().includes(submittedAnswer.value.toLowerCase())) {
             console.log("Answer checked (correct)!")
-            display.innerHTML = display.innerHTML.replace(`<button onclick="checkAnswer('${quizNumber}', '${questionNumber}')">Check my Answer</button>`,
-            `Congratulations! You are correct! <br> <br> <button onclick="generateAndDisplayQuestion('${quizNumber}')">Next Question</button>`);         
+            display.innerHTML = display.innerHTML.replace(
+                `<button onclick="checkAnswer('${quizNumber}', '${questionNumber}')">Check my Answer</button>`,
+                `Congratulations! You are correct! <br> 
+                <br>
+                <button id="answerButton"; onclick="generateAndDisplayQuestion('${quizNumber}')">Next Question</button>`
+            );  
+            document.getElementById("answer").focus();
+            document.getElementById("answer").select();  
+            document.getElementById("answer").addEventListener("keyup", 
+                function(event) {
+                    if (event.key === "Enter") {
+                        // Prevent the default action (form submission, etc.)
+                        event.preventDefault();
+                        // Trigger the button click
+                        generateAndDisplayQuestion(quizNumber);
+                    };
+                }
+            );                
         } else {
             console.log("Answer checked (incorrect)!")
             display.innerHTML = display.innerHTML.replace(
                 `<button onclick="checkAnswer('${quizNumber}', '${questionNumber}')">Check my Answer</button>`,
                 `Oops! You are incorrect! (Correct answer: ${questionsAndAnswers[quizNumber].answers[questionNumber]}) <br> 
                 <br>
-                <button onclick="generateAndDisplayQuestion('${quizNumber}')">Next Question</button>`
-            );
+                <button id="answerButton"; onclick="generateAndDisplayQuestion('${quizNumber}')">Next Question</button>`
+            ); 
+            document.getElementById("answer").focus();
+            document.getElementById("answer").select(); 
+            document.getElementById("answer").addEventListener("keyup", 
+                function(event) {
+                    if (event.key === "Enter") {
+                        // Prevent the default action (form submission, etc.)
+                        event.preventDefault();
+                        // Trigger the button click
+                        generateAndDisplayQuestion(quizNumber);
+                    };
+                }
+            );                     
         };
     } else {
         alert("Please enter an answer before checking!");
-    };    
+    };        
 };

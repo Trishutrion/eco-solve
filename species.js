@@ -1,4 +1,4 @@
-const endangeredSpecies = Array(
+const endangeredSpecies = [
     "African-Forest-Elephant",
     "Amur-Leopard",
     "Black-Rhino",
@@ -49,11 +49,8 @@ const endangeredSpecies = Array(
     "Black-Spider-Monkey",
     "Dugong",
     "Giant-Panda"
-);
-const i = Math.round(Math.random() * endangeredSpecies.length);
-function getRandomSpeciesURL() {        
-    return `https://www.worldwildlife.org/species/${endangeredSpecies[i]}`;
-};
+];
+const i = Math.floor((new Date()).getTime() / 86400000) % endangeredSpecies.length;
 function displaySpecies() {
-    document.getElementById('species-name').innerHTML = `${endangeredSpecies[i].replace(/-|-/g, ' ')}`;
-}
+    return document.getElementById('species-name').innerHTML += `<a href="https://www.worldwildlife.org/species/${endangeredSpecies[i]}"; target="_blank">${endangeredSpecies[i].replace(/-|-/g, ' ')}</a>`;
+};
