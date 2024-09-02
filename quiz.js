@@ -229,7 +229,7 @@ function generateAndDisplayQuestion(quizNumber) {
     Answer: <input type="text"; spellcheck="true"; spellcheck="on"; id="answer"> <br>
     <br>
     <button onclick="checkAnswer('${quizNumber}', '${questionNumber}')">Check my Answer</button> 
-    <button onclick="startQuiz('${quizNumber}')">Exit the quiz</button> <br>
+    <button onclick="resetQuiz('${quizNumber}')">Exit the quiz</button> <br>
     `   
     document.getElementById("answer").focus();
     document.getElementById("answer").select(); 
@@ -298,4 +298,7 @@ function checkAnswer(quizNumber, questionNumber) {
     } else {
         alert("Please enter an answer before checking!");
     };        
+};
+function resetQuiz(quizNumber) {
+    document.getElementById(`quiz${quizNumber}`).innerHTML = `<button onclick="startQuiz(1)">Quiz 1</button>`
 };
