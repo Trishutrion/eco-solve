@@ -226,7 +226,7 @@ function generateAndDisplayQuestion(quizNumber) {
     let questionNumber = Math.floor(Math.random() * 19 + 1); 
     display.innerHTML = `
     Question ${questionNumber}: ${questionsAndAnswers[quizNumber].questions[questionNumber]} <br>
-    Answer: <input type='text'; spellcheck="true"; id='answer'> <br>
+    Answer: <input type="text"; spellcheck="true"; spellcheck="on"; id="answer"> <br>
     <br>
     <button onclick="checkAnswer('${quizNumber}', '${questionNumber}')">Check my Answer</button> 
     <button onclick="startQuiz('${quizNumber}')">Exit the quiz</button> <br>
