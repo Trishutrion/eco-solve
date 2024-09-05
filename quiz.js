@@ -299,6 +299,10 @@ function checkAnswer(quizNumber, questionNumber) {
         alert("Please enter an answer before checking!");
     };        
 };
+/**
+ * Resets the quiz back to the original state.
+ * @param {*} quizNumber The number of the quiz.
+ */
 function resetQuiz(quizNumber) {
     document.getElementById(`quiz${quizNumber}`).innerHTML = `<button onclick="startQuiz(${quizNumber})">Quiz ${quizNumber}</button>`
 };
