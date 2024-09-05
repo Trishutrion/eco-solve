@@ -1,6 +1,4 @@
-/**Eco-Solve: Personal Tracker (Backend)
- * by Arnav Bagal
- */
+/** */
 /** Displays the survey for environmental impacts on the HTML page. */
 function impactsSurvey() {
     console.log("Survey started!")
@@ -59,11 +57,7 @@ function impactsSurvey() {
     <br>
     `
 };
-/** 
- * Displays the survey for environmental goal-setting on the HTML page. 
- * 
- * Details:
-*/
+/** Displays the survey for environmental goal-setting on the HTML page. */
 function goalSettingSurvey() {
     console.log("Survey started!")
     const display = document.getElementById('goal-setting')
