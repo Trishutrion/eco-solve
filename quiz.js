@@ -300,5 +300,5 @@ function checkAnswer(quizNumber, questionNumber) {
     };        
 };
 function resetQuiz(quizNumber) {
-    document.getElementById(`quiz${quizNumber}`).innerHTML = `<button onclick="startQuiz(1)">Quiz 1</button>`
+    document.getElementById(`quiz${quizNumber}`).innerHTML = `<button onclick="startQuiz(${quizNumber})">Quiz ${quizNumber}</button>`
 };
