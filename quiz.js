@@ -200,7 +200,7 @@ const questionsAndAnswers = {
 };
 /** 
  * Starts the quiz. 
- * @param {number} quizNumber - The quiz number.
+ * @param {number} quizNumber The quiz number.
 */
 function startQuiz(quizNumber) {
     console.log(`Quiz started!`)
@@ -218,7 +218,7 @@ function startQuiz(quizNumber) {
 };
 /** 
  * Generates and displays a random question for the specified quiz. 
- * @param {number} quizNumber - The quiz number.
+ * @param {number} quizNumber The quiz number.
 */
 function generateAndDisplayQuestion(quizNumber) {   
     console.log(`Question displayed!`)
@@ -246,8 +246,8 @@ function generateAndDisplayQuestion(quizNumber) {
 };
 /** 
  * Checks the answer for the specified question. 
- * @param {number} quizNumber - The quiz number.
- * @param {number} questionNumber - The question number.
+ * @param {number} quizNumber The quiz number.
+ * @param {number} questionNumber The question number.
 */
 function checkAnswer(quizNumber, questionNumber) {
     let submittedAnswer = document.querySelector("#answer");
@@ -300,7 +300,7 @@ function checkAnswer(quizNumber, questionNumber) {
     };        
 };
 /**
- * Resets the quiz back to the original state.
+ * Resets the specified quiz back to the original state.
  * @param {*} quizNumber The number of the quiz.
  */
 function resetQuiz(quizNumber) {
