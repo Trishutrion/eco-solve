@@ -56,7 +56,7 @@ function startSurvey(divID) {
         <br>
         <br>
         <button onclick="console.log("Survey submitted!")">Submit!</button> 
-        <button onclick="resetSurvey("impacts")">Exit the survey</button> 
+        <button onclick="resetSurvey('impacts')">Exit the survey</button> 
         <br>
         <br>        
         `
@@ -112,12 +112,11 @@ function startSurvey(divID) {
         <br>
         <br>
         <button onclick="console.log("Survey submitted!")">Submit!</button> 
-        <button onclick="resetSurvey("goal-setting")">Exit the survey</button> 
+        <button onclick="resetSurvey('goal-setting')">Exit the survey</button> 
         <br>
         <br>        
         `
     }
-
 };
 /**
  * Resets the survey which is contained in the element with the specified ID.
