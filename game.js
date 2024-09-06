@@ -1,7 +1,10 @@
 /** */
-// Global constants and variables
-const canvas = document.getElementById("game-canvas")
-const ctx = canvas.getContext('2d')
+/** */
+function startGame() {
+    const canvas = document.getElementById("game-canvas")
+    const ctx = canvas.getContext('2d')
+    intro();
+};
 /** */
 function intro() {
     let running = true;
@@ -37,4 +40,4 @@ function gameLoop() {};
 /** */
 function restart() {};
 // Start the game
-intro();
+startGame();
