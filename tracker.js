@@ -137,7 +137,7 @@ function resetSurvey(divID) {
         Hence, if required, users can modify, change, and/or delete their data from this .json file if they wish to.<br>
         We value privacy at Eco-Solve, so your data is yours and not visible to anyone (even us, for that matter).<br>
         <br>
-        <button onclick="impactsSurvey()">Begin!</button> <br>
+        <button onclick="startSurvey('impacts')">Begin!</button> <br>
         <br>        
         `
     } else if (divID === "goal-setting") {
@@ -153,7 +153,7 @@ function resetSurvey(divID) {
         Hence, if required, users can modify, change, and/or delete their data from this .json file if they wish to.<br>
         We value privacy at Eco-Solve, so your data is yours and not visible to anyone (even us, for that matter).<br>
         <br>
-        <button onclick="goalSettingSurvey()">Begin!</button> <br>
+        <button onclick="startSurvey('goal-setting')">Begin!</button> <br>
         <br>
         `
     }
