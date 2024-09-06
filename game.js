@@ -21,7 +21,7 @@ function intro() {
         ctx.textAlign = 'center';
         var fontSize = 50;
         ctx.font = `${fontSize}px Arial`
-        ctx.fillText(text = "Eco-Quest", x = 0, y = 0);
+        ctx.fillText(text = "Eco-Quest", x = canvas.width / 2, y = 0);
         var fontSize = 30;
         ctx.fillText(text = "brought to you by Eco-Solve", x, y += fontSize);
         var fontSize = 20;
