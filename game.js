@@ -28,9 +28,11 @@ function intro() {
         var fontSize = 50;
         ctx.font = `${fontSize}px Arial`
         ctx.fillText(text = "Eco-Quest", x = canvas.width / 2, y = (canvas.height - fontSize) / 2);
-        var fontSize = 30;
+        let fontSize = 30;
+        ctx.font = `${fontSize}px Arial`
         ctx.fillText(text = "brought to you by Eco-Solve", x, y += fontSize);
-        var fontSize = 15;
+        let fontSize = 15;
+        ctx.font = `${fontSize}px Arial`
         ctx.fillText(text = "Press Enter to begin!", x, y = canvas.height - 2 * fontSize);
         ctx.fillText(text = "Press H to see how to play", x, y += fontSize);
         requestAnimationFrame(intro); 
