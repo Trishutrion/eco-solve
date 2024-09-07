@@ -8,8 +8,34 @@
 // Global constants and variables
 const canvas = document.getElementById("game-canvas");
 const ctx = canvas.getContext('2d');
-/** Runs the introductory loop for Eco-Quest. */
+/** Displays the game title and instructions on the canvas. */
 function intro() {    
+    let running = true;
+    canvas.addEventListener('keydown', 
+        function (event) {
+            if (event.key === 'Enter') {
+                running = false;
+                lore();
+            };
+        }
+    );    
+    if (running) {
+        ctx.fillStyle = 'black';
+        ctx.textAlign = 'center';
+        var fontSize = 50;
+        ctx.font = `${fontSize}px Arial`
+        ctx.fillText(text = "Eco-Quest", x = canvas.width / 2, y = (canvas.height - fontSize) / 2);
+        var fontSize = 30;
+        ctx.font = `${fontSize}px Arial`
+        ctx.fillText(text = "brought to you by Eco-Solve", x, y += fontSize);
+        var fontSize = 15;
+        ctx.font = `${fontSize}px Arial`
+        ctx.fillText(text = "Press ENTER to continue", x, y = canvas.height - 2 * fontSize);
+        requestAnimationFrame(intro); 
+    };    
+};
+/** Displays the background lore for the game on the canvas.*/
+function lore() {
     let running = true;
     canvas.addEventListener('keydown', 
         function (event) {
@@ -21,24 +47,23 @@ function intro() {
                 howToPlay();
             };
         }
-    );    
+    );  
     if (running) {
-        ctx.fillStyle = 'black';
-        ctx.textAlign = 'center';
-        var fontSize = 50;
-        ctx.font = `${fontSize}px Arial`
-        ctx.fillText(text = "Eco-Quest", x = canvas.width / 2, y = (canvas.height - fontSize) / 2);
-        let fontSize = 30;
-        ctx.font = `${fontSize}px Arial`
-        ctx.fillText(text = "brought to you by Eco-Solve", x, y += fontSize);
-        let fontSize = 15;
-        ctx.font = `${fontSize}px Arial`
-        ctx.fillText(text = "Press Enter to begin!", x, y = canvas.height - 2 * fontSize);
-        ctx.fillText(text = "Press H to see how to play", x, y += fontSize);
-        requestAnimationFrame(intro); 
-    };    
+        `
+        Background Lore
+        An environmental disaster has occured! <br>
+        Water-soluble aliens have made their way from outer space into clouds in Earth's atmosphere, <br>
+        so they fall to the Earth alongside rain from these clouds. <br>
+        They then permeate into the soil and cause intense erosion, damaging crop yields and floral biodiversity. <br>
+        In short, Earth is under attack! <br>
+        <br>
+        However, your team of scientists has discovered a solution.
+        If you trap the aliens in nitric acid, they will be paralysed, hence reducing the threat they pose to the environment. <br>
+        So, on a rainy day, your team creates a giant vat of nitric acid and sets off, hoping to catch some aliens in the process. <br>
+        `
+    };
 };
-/** Displays instructions on how to play on the screen. */
+/** Displays instructions on how to play on the canvas. */
 function howToPlay() {
     let running = true;
     canvas.addEventListener('keydown', 
@@ -66,9 +91,9 @@ function howToPlay() {
         `
     };    
 };
-/** */
+/** Renders the game elements and displays them on the canvas.*/
 function gameLoop() {};
-/** */
+/** Resets all game variables and runs the game loop again. */
 function restart() {};
 // Start the game
 intro();
