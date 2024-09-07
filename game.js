@@ -1,8 +1,8 @@
 /**
- * Eco-Solve: Games (Backend)
+ * Eco-Solve: Games (Javascript)
  * @author Arnav Bagal
  * 
- * @summary This page contains all of the backend code for the Games menu of Eco-Solve.
+ * @summary This page contains all of the Javascript code for the Games menu of Eco-Solve.
  * @description This page contains all of the functions required to run the Games page of Eco-Solve, such as an introduction function, a guide on how to play, a main game loop, and a restart function, for every game on the page. 
  */
 // Global constants and variables
