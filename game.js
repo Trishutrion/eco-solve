@@ -58,7 +58,7 @@ function lore() {
         ctx.textAlign = 'center';
         var fontSize = 50;
         ctx.font = `${fontSize}px Arial`
-        ctx.fillText(text = "Background Lore", x = canvas.width / 2, y = canvas.height + 2 * fontSize);
+        ctx.fillText(text = "Background Lore", x = canvas.width / 2, y = 2 * fontSize);
         var fontSize = 15;
         ctx.font = `${fontSize}px Arial`
         ctx.fillText(text = "An environmental disaster has occured!", x, y +=  2* fontSize);
