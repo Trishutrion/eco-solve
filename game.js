@@ -46,6 +46,9 @@ function lore() {
             } else if (event.key === 'h') {
                 running = false;
                 howToPlay();
+            } else if (event.key === 'b') {
+                running = false;
+                intro();
             };
         }
     );  
@@ -55,8 +58,8 @@ function lore() {
         ctx.textAlign = 'center';
         var fontSize = 50;
         ctx.font = `${fontSize}px Arial`
-        ctx.fillText(text = "Background Lore", x = canvas.width / 2, y = (canvas.height - fontSize) / 2);
-        var fontSize = 10;
+        ctx.fillText(text = "Background Lore", x = canvas.width / 2, y = canvas.height + 2 * fontSize);
+        var fontSize = 15;
         ctx.font = `${fontSize}px Arial`
         ctx.fillText(text = "An environmental disaster has occured!", x, y +=  2* fontSize);
         ctx.fillText(text = "Water-soluble aliens have made their way from outer space into clouds in Earth's atmosphere,", x, y += fontSize);
@@ -66,10 +69,9 @@ function lore() {
         ctx.fillText(text = "However, your team of scientists has discovered a solution.", x, y += 2 * fontSize);
         ctx.fillText(text = "If you trap the aliens in nitric acid, they will be paralysed, hence reducing the threat they pose to the environment.", x, y += fontSize);
         ctx.fillText(text = "So, on a rainy day, your team creates a giant vat of nitric acid and sets off, hoping to catch some aliens in the process.", x, y += fontSize);
-        var fontSize = 15;
-        ctx.font = `${fontSize}px Arial`
-        ctx.fillText(text = "Press H to see how to play", x, y = canvas.height - 2 * fontSize);
-        ctx.fillText(text = "Press ENTER to continue", x, y = canvas.height - fontSize);
+        ctx.fillText(text = "Press H to see how to play", x, y = canvas.height - 3 * fontSize);
+        ctx.fillText(text = "Press ENTER to continue", x, y = canvas.height - 2 * fontSize);
+        ctx.fillText(text = "Press B to go back", x, y = canvas.height - fontSize);
         requestAnimationFrame(lore); 
     };
 };
