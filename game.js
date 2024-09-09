@@ -70,7 +70,7 @@ function lore() {
         ctx.font = `${fontSize}px Arial`
         ctx.fillText(text = "Press H to see how to play", x, y = canvas.height - 2 * fontSize);
         ctx.fillText(text = "Press ENTER to continue", x, y = canvas.height - fontSize);
-        requestAnimationFrame(howToPlay); 
+        requestAnimationFrame(lore); 
     };
 };
 /** Displays instructions on how to play on the canvas. */
