@@ -11,7 +11,7 @@ const ctx = canvas.getContext('2d');
 /** Displays the game title and instructions on the canvas. */
 function intro() {    
     let running = true;
-    canvas.addEventListener('keydown', 
+    document.addEventListener('keydown', 
         function (event) {
             if (event.key === 'Enter') {
                 running = false;
@@ -37,7 +37,7 @@ function intro() {
 /** Displays the background lore for the game on the canvas.*/
 function lore() {
     let running = true;
-    canvas.addEventListener('keydown', 
+    document.addEventListener('keydown', 
         function (event) {
             if (event.key === 'Enter') {
                 running = false;
@@ -74,7 +74,7 @@ function lore() {
 /** Displays instructions on how to play on the canvas. */
 function howToPlay() {
     let running = true;
-    canvas.addEventListener('keydown', 
+    document.addEventListener('keydown', 
         function(event) {
             if (event.key === 'Enter') {
                 running = false;
