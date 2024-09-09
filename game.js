@@ -49,18 +49,22 @@ function lore() {
         }
     );  
     if (running) {
-        `
-        Background Lore
-        An environmental disaster has occured! <br>
-        Water-soluble aliens have made their way from outer space into clouds in Earth's atmosphere, <br>
-        so they fall to the Earth alongside rain from these clouds. <br>
-        They then permeate into the soil and cause intense erosion, damaging crop yields and floral biodiversity. <br>
-        In short, Earth is under attack! <br>
-        <br>
-        However, your team of scientists has discovered a solution.
-        If you trap the aliens in nitric acid, they will be paralysed, hence reducing the threat they pose to the environment. <br>
-        So, on a rainy day, your team creates a giant vat of nitric acid and sets off, hoping to catch some aliens in the process. <br>
-        `
+        ctx.fillStyle = 'black';
+        ctx.textAlign = 'center';
+        var fontSize = 50;
+        ctx.font = `${fontSize}px Arial`
+        ctx.fillText(text = "Background Lore", x = canvas.width / 2, y = (canvas.height - fontSize) / 2);
+        var fontSize = 10;
+        ctx.font = `${fontSize}px Arial`
+        ctx.fillText(text = "An environmental disaster has occured!", x, y +=  2* fontSize);
+        ctx.fillText(text = "Water-soluble aliens have made their way from outer space into clouds in Earth's atmosphere,", x, y += fontSize);
+        ctx.fillText(text = "so they fall to the Earth alongside rain from these clouds.", x, y += fontSize);
+        ctx.fillText(text = "They then permeate into the soil and cause intense erosion, damaging crop yields and floral biodiversity.", x, y += fontSize);
+        ctx.fillText(text = "In short, Earth is under attack!", x, y += fontSize);
+        ctx.fillText(text = "However, your team of scientists has discovered a solution.", x, y += 2 * fontSize);
+        ctx.fillText(text = "If you trap the aliens in nitric acid, they will be paralysed, hence reducing the threat they pose to the environment.", x, y += fontSize);
+        ctx.fillText(text = "So, on a rainy day, your team creates a giant vat of nitric acid and sets off, hoping to catch some aliens in the process.", x, y += fontSize);
+        requestAnimationFrame(howToPlay); 
     };
 };
 /** Displays instructions on how to play on the canvas. */
