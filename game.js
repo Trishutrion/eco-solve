@@ -64,6 +64,10 @@ function lore() {
         ctx.fillText(text = "However, your team of scientists has discovered a solution.", x, y += 2 * fontSize);
         ctx.fillText(text = "If you trap the aliens in nitric acid, they will be paralysed, hence reducing the threat they pose to the environment.", x, y += fontSize);
         ctx.fillText(text = "So, on a rainy day, your team creates a giant vat of nitric acid and sets off, hoping to catch some aliens in the process.", x, y += fontSize);
+        var fontSize = 15;
+        ctx.font = `${fontSize}px Arial`
+        ctx.fillText(text = "Press H to see how to play", x, y = canvas.height - 2 * fontSize);
+        ctx.fillText(text = "Press ENTER to continue", x, y = canvas.height - fontSize);
         requestAnimationFrame(howToPlay); 
     };
 };
