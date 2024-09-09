@@ -11,47 +11,43 @@ const ctx = canvas.getContext('2d');
 /** Displays the game title and instructions on the canvas. */
 function intro() {    
     let running = true;
-    document.addEventListener('keydown', 
-        function (event) {
-            if (event.key === 'Enter') {
-                running = false;
-                lore();
-            };
+    document.onkeydown = function(event) {
+        if (event.key === 'Enter') {
+            running = false;
+            lore();
         }
-    );    
+    };    
     if (running) {
-        ctx.clearRect(0, 0, canvas.width, canvas.height)
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
         ctx.fillStyle = 'black';
         ctx.textAlign = 'center';
         var fontSize = 50;
-        ctx.font = `${fontSize}px Arial`
-        ctx.fillText(text = "Eco-Quest: Part 1", x = canvas.width / 2, y = (canvas.height - fontSize) / 2);
-        var fontSize = 30;
-        ctx.font = `${fontSize}px Arial`
-        ctx.fillText(text = "brought to you by Eco-Solve", x, y += fontSize);
-        var fontSize = 15;
-        ctx.font = `${fontSize}px Arial`
-        ctx.fillText(text = "Press ENTER to continue", x, y = canvas.height - 2 * fontSize);
+        ctx.font = `${fontSize}px Arial`;
+        ctx.fillText("Eco-Quest: Part 1", canvas.width / 2, (canvas.height - fontSize) / 2);
+        fontSize = 30;
+        ctx.font = `${fontSize}px Arial`;
+        ctx.fillText("brought to you by Eco-Solve", canvas.width / 2, (canvas.height - fontSize) / 2 + fontSize);
+        fontSize = 15;
+        ctx.font = `${fontSize}px Arial`;
+        ctx.fillText("Press ENTER to continue", canvas.width / 2, canvas.height - 2 * fontSize);
         requestAnimationFrame(intro); 
     };    
 };
 /** Displays the background lore for the game on the canvas.*/
 function lore() {
     let running = true;
-    document.addEventListener('keydown', 
-        function (event) {
-            if (event.key === 'Enter') {
-                running = false;
-                gameLoop();
-            } else if (event.key === 'h') {
-                running = false;
-                howToPlay();
-            } else if (event.key === 'b') {
-                running = false;
-                intro();
-            };
-        }
-    );  
+    document.onkeydown = function (event) {
+        if (event.key === 'Enter') {
+            running = false;
+            gameLoop();
+        } else if (event.key === 'h') {
+            running = false;
+            howToPlay();
+        } else if (event.key === 'b') {
+            running = false;
+            intro();
+        };
+    }; 
     if (running) {
         ctx.clearRect(0, 0, canvas.width, canvas.height)
         ctx.fillStyle = 'black';
