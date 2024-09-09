@@ -20,6 +20,7 @@ function intro() {
         }
     );    
     if (running) {
+        ctx.clearRect(0, 0, canvas.width, canvas.height)
         ctx.fillStyle = 'black';
         ctx.textAlign = 'center';
         var fontSize = 50;
@@ -49,6 +50,7 @@ function lore() {
         }
     );  
     if (running) {
+        ctx.clearRect(0, 0, canvas.width, canvas.height)
         ctx.fillStyle = 'black';
         ctx.textAlign = 'center';
         var fontSize = 50;
@@ -86,6 +88,7 @@ function howToPlay() {
         }
     );
     if (running) {
+        ctx.clearRect(0, 0, canvas.width, canvas.height)
         `
         How to Play
         In Eco-Quest: Part 1, the vat is a blue rectangle and the aliens are red dots.
