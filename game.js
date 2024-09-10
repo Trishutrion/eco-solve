@@ -53,10 +53,10 @@ function lore() {
         ctx.fillStyle = 'black';
         ctx.textAlign = 'center';
         var fontSize = 50;
-        ctx.font = `${fontSize}px Arial`
+        ctx.font = `${fontSize}px Arial`;
         ctx.fillText(text = "Background Lore", x = canvas.width / 2, y = 2 * fontSize);
         var fontSize = 15;
-        ctx.font = `${fontSize}px Arial`
+        ctx.font = `${fontSize}px Arial`;
         ctx.fillText(text = "An environmental disaster has occured!", x, y +=  2* fontSize);
         ctx.fillText(text = "Water-soluble aliens have made their way from outer space into clouds in Earth's atmosphere,", x, y += fontSize);
         ctx.fillText(text = "so they fall to the Earth alongside rain from these clouds.", x, y += fontSize);
@@ -74,30 +74,35 @@ function lore() {
 /** Displays instructions on how to play on the canvas. */
 function howToPlay() {
     let running = true;
-    document.addEventListener('keydown', 
-        function(event) {
-            if (event.key === 'Enter') {
-                running = false;
-                gameLoop();
-            } else if (event.key == 'b') {
-                running = false;
-                intro();
-            };
-        }
-    );
+    document.onkeydown = function (event) {
+        if (event.key === 'Enter') {
+            running = false;
+            gameLoop();
+        } else if (event.key === 'b') {
+            running = false;
+            lore();
+        };
+    }; 
     if (running) {
-        ctx.clearRect(0, 0, canvas.width, canvas.height)
-        `
-        How to Play
-        In Eco-Quest: Part 1, the vat is a blue rectangle and the aliens are red dots.
-        Your aim is to catch as many aliens as you can in 60 seconds. 
-        The vat can be moved using the arrow keys or the WASD keys, 
-        but it cannot leave the game screen.
-        The number of aliens you have collected, as well as the lefover time, 
-        will be displayed on the screen. 
-        So, how many aliens can you catch?
-        Play Eco-Quest: Part 1 to find out!       
-        `
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        ctx.fillStyle = 'black';
+        ctx.textAlign = 'center';
+        var fontSize = 50;
+        ctx.font = `${fontSize}px Arial`;
+        ctx.fillText(text = "How to Play", x = canvas.width / 2, y = 2 * fontSize);
+        var fontSize = 15;
+        ctx.font = `${fontSize}px Arial`;
+        ctx.fillText(text = "In Eco-Quest: Part 1, the vat is a blue rectangle and the aliens are red dots.", x, y +=  2* fontSize);
+        ctx.fillText(text = "Your aim is to catch as many aliens as you can in 60 seconds.", x, y += fontSize);
+        ctx.fillText(text = "The vat can be moved using the arrow keys or the WASD keys,", x, y += fontSize);
+        ctx.fillText(text = "but it cannot leave the game screen.", x, y += fontSize);
+        ctx.fillText(text = "The number of aliens you have collected, as well as the lefover time,", x, y += fontSize);
+        ctx.fillText(text = "will be displayed on the screen.", x, y += fontSize);
+        ctx.fillText(text = "So, how many aliens can you catch?", x, y += fontSize);
+        ctx.fillText(text = "Play Eco-Quest: Part 1 to find out!", x, y += fontSize);
+        ctx.fillText(text = "Press ENTER to continue", x, y = canvas.height - 2 * fontSize);
+        ctx.fillText(text = "Press B to go back", x, y = canvas.height - fontSize);
+        requestAnimationFrame(howToPlay);
     };    
 };
 /** Renders the game elements and displays them on the canvas.*/
