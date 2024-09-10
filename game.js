@@ -94,11 +94,11 @@ function howToPlay() {
         ctx.font = `${fontSize}px Arial`;
         ctx.fillText(text = "In Eco-Quest: Part 1, the vat is a blue rectangle and the aliens are red dots.", x, y +=  2* fontSize);
         ctx.fillText(text = "Your aim is to catch as many aliens as you can in 60 seconds.", x, y += fontSize);
-        ctx.fillText(text = "The vat can be moved using the arrow keys or the WASD keys,", x, y += fontSize);
+        ctx.fillText(text = "The vat can be moved using the arrow keys or the WASD keys,", x, y += 2 * fontSize);
         ctx.fillText(text = "but it cannot leave the game screen.", x, y += fontSize);
-        ctx.fillText(text = "The number of aliens you have collected, as well as the lefover time,", x, y += fontSize);
+        ctx.fillText(text = "The number of aliens you have collected, as well as the lefover time,", x, y += 2 * fontSize);
         ctx.fillText(text = "will be displayed on the screen.", x, y += fontSize);
-        ctx.fillText(text = "So, how many aliens can you catch?", x, y += fontSize);
+        ctx.fillText(text = "So, how many aliens can you catch?", x, y += 2 * fontSize);
         ctx.fillText(text = "Play Eco-Quest: Part 1 to find out!", x, y += fontSize);
         ctx.fillText(text = "Press ENTER to continue", x, y = canvas.height - 2 * fontSize);
         ctx.fillText(text = "Press B to go back", x, y = canvas.height - fontSize);
