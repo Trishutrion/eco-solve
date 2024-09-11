@@ -109,8 +109,19 @@ function howToPlay() {
     };    
 };
 /** Renders the game elements and displays them on the canvas.*/
-function gameLoop() {};
+function gameLoop() {
+    let running = true;
+    document.onkeydown = function (event) {
+    };
+    if (running) {
+
+    } else {
+
+    };
+};
 /** Resets all game variables and runs the game loop again. */
-function restart() {};
+function restart() {
+    // Reset all game variables
+};
 // Start the game
 intro();
