@@ -112,11 +112,24 @@ function howToPlay() {
 function gameLoop() {
     let running = true;
     document.onkeydown = function (event) {
-    };
+        if (event.key === 'b') {
+            running = false;
+            lore();
+        };
+    }; 
     if (running) {
-
-    } else {
-
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        ctx.fillStyle = 'black';
+        ctx.textAlign = 'center';
+        var fontSize = 50;
+        ctx.font = `${fontSize}px Arial`;
+        ctx.fillText(text = "Main Game Page", x = canvas.width / 2, y = 2 * fontSize);
+        var fontSize = 15;
+        ctx.font = `${fontSize}px Arial`;
+        ctx.fillText(text = "Sorry, the game is currently scheduled for maintenance. ", x, y +=  2* fontSize);
+        ctx.fillText(text = "It will be live on 13/09/2024. ", x, y += fontSize);
+        ctx.fillText(text = "Press B to go back", x, y = canvas.height - fontSize);
+        requestAnimationFrame(gameLoop);
     };
 };
 /** Resets all game variables and runs the game loop again. */
