@@ -61,61 +61,50 @@ function startSurvey(divID) {
         <br>        
         `
     } else if (divID === "goal-setting") {
-        document.getElementById("goal-setting").innerHTML = `
-        <br>
-        On a scale of 1 to 10, how important is recycling to you? (1 = Not important, 10 = Very important) 
-        <input type="number" min="1" max="10" step="0.5"><br>
-        <br>
-        How often do you use public transportation? (1 = Rarely or never, 10 = Frequently)
-        <input type="number" min="1" max="10" step="0.5"><br>
-        <br>
-        Rate your engagement in the following eco-friendly practices: (1 = Never, 10 = Always)<br>
-        <br>
-        Recycling:  
-        <input type="number" min="1" max="10" step="0.5"><br>
-        <br>
-        Composting: 
-        <input type="number" min="1" max="10" step="0.5"><br>
-        <br>
-        Using reusable bags:  
-        <input type="number" min="1" max="10" step="0.5"><br>
-        <br>
-        Conserving water:  
-        <input type="number" min="1" max="10" step="0.5"><br>
-        <br>
-        Using energy-efficient appliances: 
-        <input type="number" min="1" max="10" step="0.5"><br>
-        <br>
-        How concerned are you about climate change? (1 = Not concerned, 10 = Very concerned)
-        <input type="number" min="1" max="10" step="0.5"><br>
-        <br>
-        Which environmental issue do you think needs the most attention? (Select one or more): <br>
-        <br>
-        <input type="checkbox" name="environmental-issue">Deforestation<br>
-        <br>
-        <input type="checkbox" name="environmental-issue">Air pollution<br>
-        <br>
-        <input type="checkbox" name="environmental-issue">Ocean pollution<br>
-        <br>
-        <input type="checkbox" name="environmental-issue">Global warming<br>
-        <br>
-        <input type="checkbox" name="environmental-issue">Wildlife conservation<br>
-        <br>
-        Do you support the use of renewable energy sources? (1 = No, 10 = Yes)<br>
-        <br>
-        <input type="radio" name="renewables">Yes<br>
-        <br>
-        <input type="radio" name="renewables">No<br>
-        <br>
-        How often do you participate in community clean-up events? (1 = Never, 10 = Frequently)
-        <input type="number" min="1" max="10" step="0.5"><br>
-        <br>
-        <br>
-        <button onclick="console.log("Survey submitted!")">Submit!</button> 
-        <button onclick="resetSurvey('goal-setting')">Exit the survey</button> 
-        <br>
-        <br>        
-        `
+        const formHTML = `
+            <br>
+            <form id="surveyForm">
+                <div class="form-control">
+                    <label for="name">Name:</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                <br>
+                <div class="form-control">
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <br>
+                <div class="form-control">
+                    <label for="goal">Your Environmental Goal:</label>
+                    <input type="text" id="goal" name="goal" required>
+                </div>
+                <br>
+                <div class="form-control">
+                    <label for="timeframe">Timeframe to Achieve Goal:</label>
+                    <select id="timeframe" name="timeframe" required>
+                        <option value="1 month">1 month</option>
+                        <option value="3 months">3 months</option>
+                        <option value="6 months">6 months</option>
+                        <option value="1 year">1 year</option>
+                    </select>
+                </div>
+                <br>
+                <button type="submit">Submit</button>
+                <button type="button" onclick="resetSurvey('goal-setting')">Exit the survey</button>
+            </form>
+        `;
+
+        document.getElementById('goal-setting').innerHTML = formHTML;
+
+        document.getElementById('surveyForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const goal = document.getElementById('goal').value;
+            const timeframe = document.getElementById('timeframe').value;
+
+            alert(`Thank you, ${name}! Your goal to "${goal}" within ${timeframe} has been recorded. We will contact you at ${email}.`);
+        });
     }
 };
 /**
