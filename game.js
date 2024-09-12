@@ -110,27 +110,96 @@ function howToPlay() {
 };
 /** Renders the game elements and displays them on the canvas.*/
 function gameLoop() {
-    let running = true;
-    document.onkeydown = function (event) {
-        if (event.key === 'b') {
-            running = false;
-            lore();
-        };
-    }; 
-    if (running) {
+    let vat = { x: canvas.width / 2, y: canvas.height - 30, width: 50, height: 20 };
+    let aliens = [];
+    let score = 0;
+    let timeLeft = 60;
+    let keys = {};
+    let gameOver = false;
+
+    for (let i = 0; i < 10; i++) {
+        aliens.push({ x: Math.random() * canvas.width, y: Math.random() * canvas.height / 2, speed: Math.random() * 2 + 1 });
+    }
+
+    document.addEventListener('keydown', (e) => keys[e.key] = true);
+    document.addEventListener('keyup', (e) => keys[e.key] = false);
+
+    function update() {
+        if (gameOver) {
+            if (keys['Enter']) {
+                document.location.reload();
+            }
+            return;
+        }
+
+        if (keys['ArrowLeft'] || keys['a']) vat.x -= 5;
+        if (keys['ArrowRight'] || keys['d']) vat.x += 5;
+        if (keys['ArrowUp'] || keys['w']) vat.y -= 5;
+        if (keys['ArrowDown'] || keys['s']) vat.y += 5;
+
+        vat.x = Math.max(0, Math.min(canvas.width - vat.width, vat.x));
+        vat.y = Math.max(0, Math.min(canvas.height - vat.height, vat.y));
+
+        for (let i = aliens.length - 1; i >= 0; i--) {
+            aliens[i].y += aliens[i].speed;
+
+            if (vat.x < aliens[i].x + 10 && vat.x + vat.width > aliens[i].x &&
+                vat.y < aliens[i].y + 10 && vat.y + vat.height > aliens[i].y) {
+                score++;
+                aliens[i].y = 0;
+                aliens[i].x = Math.random() * canvas.width;
+            }
+
+            if (aliens[i].y > canvas.height - 10) {
+                aliens[i].y = 0;
+                aliens[i].x = Math.random() * canvas.width;
+            }
+        }
+
+        if (timeLeft > 0) {
+            timeLeft -= 1 / 60;
+        } else {
+            gameOver = true;
+        }
+    }
+
+    function draw() {
         ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+        ctx.fillStyle = 'green';
+        ctx.fillRect(0, canvas.height - 10, canvas.width, 10);
+
+        ctx.fillStyle = 'blue';
+        ctx.fillRect(vat.x, vat.y, vat.width, vat.height);
+
+        ctx.fillStyle = 'red';
+        for (let alien of aliens) {
+            ctx.beginPath();
+            ctx.arc(alien.x, alien.y, 10, 0, Math.PI * 2);
+            ctx.fill();
+        }
+
         ctx.fillStyle = 'black';
-        ctx.textAlign = 'center';
-        var fontSize = 50;
-        ctx.font = `${fontSize}px Arial`;
-        ctx.fillText(text = "Main Game Page", x = canvas.width / 2, y = 2 * fontSize);
-        var fontSize = 15;
-        ctx.font = `${fontSize}px Arial`;
-        ctx.fillText(text = "Sorry, the game is currently scheduled for maintenance. ", x, y +=  2* fontSize);
-        ctx.fillText(text = "It will be live on 13/09/2024. ", x, y += fontSize);
-        ctx.fillText(text = "Press B to go back", x, y = canvas.height - fontSize);
-        requestAnimationFrame(gameLoop);
-    };
+        ctx.font = '20px Arial';
+        ctx.fillText(`Score: ${score}`, 50, 30); 
+        ctx.fillText(`Time Left: ${Math.ceil(timeLeft)}`, 70, 60); 
+
+        if (gameOver) {
+            ctx.fillStyle = 'black';
+            ctx.font = '30px Arial';
+            ctx.fillText('Game Over', canvas.width / 2 - 70, canvas.height / 2 - 30);
+            ctx.fillText(`You caught ${score} aliens`, canvas.width / 2 - 100, canvas.height / 2);
+            ctx.fillText('Press ENTER to restart', canvas.width / 2 - 130, canvas.height / 2 + 30);
+        }
+    }
+
+    function loop() {
+        update();
+        draw();
+        requestAnimationFrame(loop);
+    }
+
+    loop();
 };
 /** Resets all game variables and runs the game loop again. */
 function restart() {
