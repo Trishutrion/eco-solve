@@ -7,11 +7,11 @@ They can do this by watching videos, taking quizzes, playing games, and/or even 
 ## Videos
 
 The videos section of Eco-Solve is where users can watch a carefully selected collection of YouTube videos about environmental issues that are both engaging and informative.\
-This section also contains the award-winning film "Echoes of Humanity", a dystopian tale about an alien who finds the message of the last person alive on Earth.\ 
+This section also contains the award-winning film "Echoes of Humanity", a dystopian tale about an alien who finds the message of the last person alive on Earth. \ 
 This film was made by the creator(s) of Eco-Solve.
 
 ## Quizzes
-If you wish to test yourself, the quizzes page of Eco-Solve is for you. \ 
+If you wish to test yourself, the quizzes page of Eco-Solve is for you. <br/> 
 This page consists of quizzes that contain the most comprehensive questions addressing the VCE Environmental Science Study Design. \ 
 Source: `https://www.vcaa.vic.edu.au/curriculum/vce/vce-study-designs/environmentalscience/Pages/Index.aspx`
 
