@@ -11,8 +11,8 @@ This section also contains the award-winning film "Echoes of Humanity", a dystop
 This film was made by the creator(s) of Eco-Solve.
 
 ## Quizzes
-If you wish to test yourself, the quizzes page of Eco-Solve is for you.\ 
-This page consists of quizzes that contain the most comprehensive questions addressing the VCE Environmental Science Study Design.\ 
+If you wish to test yourself, the quizzes page of Eco-Solve is for you. \ 
+This page consists of quizzes that contain the most comprehensive questions addressing the VCE Environmental Science Study Design. \ 
 Source: `https://www.vcaa.vic.edu.au/curriculum/vce/vce-study-designs/environmentalscience/Pages/Index.aspx`
 
 ## Games
