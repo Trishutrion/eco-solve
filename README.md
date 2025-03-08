@@ -1,22 +1,23 @@
 # Eco-Solve 
 
-Hello, and welcome to Eco-Solve!
-Eco-Solve is an environmental education website where users can learn more about the environment and get the tools to make more sustainable choices.
+Hello, and welcome to Eco-Solve!\
+Eco-Solve is an environmental education website where users can learn more about the environment and get the tools to make more sustainable choices.\
 They can do this by watching videos, taking quizzes, playing games, and/or even setting their own personal goals.
 
 ## Videos
 
-The videos section of Eco-Solve is where users can watch a carefully selected collection of YouTube videos about environmental issues that are both engaging and informative. 
-This section also contains the award-winning film "Echoes of Humanity", a dystopian tale about an alien who finds the message of the last person alive on Earth. This film was made by the creator(s) of Eco-Solve. 
+The videos section of Eco-Solve is where users can watch a carefully selected collection of YouTube videos about environmental issues that are both engaging and informative.\
+This section also contains the award-winning film "Echoes of Humanity", a dystopian tale about an alien who finds the message of the last person alive on Earth.\ 
+This film was made by the creator(s) of Eco-Solve.
 
 ## Quizzes
-If you wish to test yourself, the quizzes page of Eco-Solve is for you. 
-This page consists of quizzes that contain the most comprehensive questions addressing the VCE Environmental Science Study Design. 
+If you wish to test yourself, the quizzes page of Eco-Solve is for you.\ 
+This page consists of quizzes that contain the most comprehensive questions addressing the VCE Environmental Science Study Design.\ 
 Source: `https://www.vcaa.vic.edu.au/curriculum/vce/vce-study-designs/environmentalscience/Pages/Index.aspx`
 
 ## Games
-If you are a pro hacker gamer, Eco-Solve's game page is your go-to.
-This page contains the legendary saga of the Eco-Quest games, which are exclusively found on Eco-Solve.
+If you are a pro hacker gamer, Eco-Solve's game page is your go-to.\
+This page contains the legendary saga of the Eco-Quest games, which are exclusively found on Eco-Solve.\
 The Eco-Quest saga is also made by the creator(s) of Eco-Solve.
 
 ## Getting Started
