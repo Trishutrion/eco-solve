@@ -52,5 +52,5 @@ const endangeredSpecies = [
 ];
 const i = Math.floor((new Date()).getTime() / 86400000) % endangeredSpecies.length;
 function displaySpecies() {
-    return document.getElementById('species-name').innerHTML += `<a href="https://www.worldwildlife.org/species/${endangeredSpecies[i].replace("'",'')}"; target="_blank">${endangeredSpecies[i].replace(/-|-/g, ' ')}</a>`;
+    return document.getElementById('species-name').innerHTML += `<a href="https://www.iucnredlist.org/search?query=${endangeredSpecies[i].replace("'",'')}&searchType=species"; target="_blank">${endangeredSpecies[i].replace(/-|-/g, ' ')}</a>`;
 };
