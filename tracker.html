@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Personal Tracker</title>
+        <link rel="stylesheet" href="styles.css">
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    </head>
+    <body>
+        <h1>Personal Tracker</h1>
+        <h2>Treat this world as a mountain. Mark where millions stop. Push on, there is always room at the top!</h2>
+        <div style="display: flex; justify-content: center;">
+            <div id="navbar"><script src="navbar.js"></script></div>
+        </div>
+
+        <br>
+
+        <div id="box">
+            <h2>Environmental Survey</h2>
+            <p>Your ID: <span id="userId"></span></p>
+            <div id="options" style="text-align: center;">
+                <select id="actionSelector" onchange="handleSurveyAction(this)" required>
+                    <option value="">-- Select an Action --</option>
+                    <option value="enter">Enter Survey Data</option>
+                    <option value="update">Update Survey Data</option>
+                    <option value="goal">Set Goals</option>
+                    <option value="clear">Clear Survey Data</option>                        
+                </select>
+            </div>        
+            <!-- Survey form -->
+            <div id="survey" style="display: none;">                
+                <form id="surveyForm">
+                    <h3>Survey</h3>
+                    <label>Electricity Usage (kWh per month):</label>
+                    <input type="number" name="electricity" min="0" required /> <br>
+                    <br>
+                    <label>Water Consumption (liters per day):</label>
+                    <input type="number" name="water" min="0" required /> <br>
+                    <br>
+                    <label>Car Mileage (km per week):</label>
+                    <input type="number" name="carMileage" min="0" required /> <br>
+                    <br>
+                    <label>Public Transport Trips (per week):</label>
+                    <input type="number" name="publicTransport" min="0" required /><br>
+                    <br>
+                    <label>Waste Generation (kg per week):</label>
+                    <input type="number" name="waste" min="0" required /><br>
+                    <br>
+                    <label>Plastic Usage (single-use count per week):</label>
+                    <input type="number" name="plastic" min="0" required /><br>
+                    <br>
+                    <label>Meat Consumption (meals per week):</label>
+                    <input type="number" name="meat" min="0" required /><br>
+                    <br>
+                    <label>Paper Usage (sheets per month):</label>
+                    <input type="number" name="paper" min="0" required /><br>
+                    <br>
+                    <label>Heating/Cooling Usage (hours per day):</label>
+                    <input type="number" name="heatingCooling" min="0" required /><br>
+                    <br>
+                    <label>Food Waste (kg per week):</label>
+                    <input type="number" name="foodWaste" min="0" required /><br>
+                    <br>
+                    <button type="submit">Submit</button>
+                </form>
+            </div>
+            <!-- Update form -->
+            <div id="updateSection" style="display: none;">
+                <h3>Update Survey Data</h3>
+                <select id="metricSelect">
+                    <option value="">-- Select Metric --</option>
+                    <option value="electricity">Electricity Usage</option>
+                    <option value="water">Water Consumption</option>
+                    <option value="carMileage">Car Mileage</option>
+                    <option value="publicTransport">Public Transport Trips</option>
+                    <option value="waste">Waste Generation</option>
+                    <option value="plastic">Plastic Usage</option>
+                    <option value="meat">Meat Consumption</option>
+                    <option value="paper">Paper Usage</option>
+                    <option value="heatingCooling">Heating/Cooling Usage</option>
+                    <option value="foodWaste">Food Waste</option>
+                </select><br>
+                <br>
+                <form id="updateForm" style="display: none;">
+                    <label id="updateLabel"></label> <br>
+                    <br>
+                    <input type="number" id="updateInput" min="0" required /><br>
+                    <br>
+                    <button type="submit">Update</button> <br>
+                    <br>
+                </form>
+                <button onclick="showCustomDataForm()">Enter Custom Data</button><br>
+                <br>
+                <form id="customDataForm" style="display: none">
+                    <label for="customMetric">Metric:</label>
+                    <select id="customMetric" required>
+                        <option value="">-- Select Metric --</option>
+                        <option value="electricity">Electricity Usage</option>
+                        <option value="water">Water Consumption</option>
+                        <option value="carMileage">Car Mileage</option>
+                        <option value="publicTransport">Public Transport Trips</option>
+                        <option value="waste">Waste Generation</option>
+                        <option value="plastic">Plastic Usage</option>
+                        <option value="meat">Meat Consumption</option>
+                        <option value="paper">Paper Usage</option>
+                        <option value="heatingCooling">Heating/Cooling Usage</option>
+                        <option value="foodWaste">Food Waste</option>
+                    </select><br>
+                    <br>
+                    <label for="customDate">Date:</label>
+                    <input type="date" id="customDate" required><br>
+                    <br>
+                    <label for="customTime">Time:</label>
+                    <input type="time" id="customTime" required><br>
+                    <br>
+                    <label for="customValue">Value:</label>
+                    <input type="number" id="customValue" min="0" step="any" required><br>
+                    <br>
+                    <button type="submit">Add Entry</button>
+                </form>
+            </div>
+            <!-- Goal form -->
+            <div id="goalSection" style="display: none;">
+                <h3>Set Goals</h3>
+                <form id="goalForm">
+                    <center>
+                        <label>Goal for Electricity Usage (kWh):</label>
+                        <input type="number" id="goalElectricity" min="0" /><br>
+                        <br>
+                        <label>Goal for Water Consumption (liters):</label>
+                        <input type="number" id="goalWater" min="0" /><br>
+                        <br>
+                        <label>Goal for Car Mileage (km):</label>
+                        <input type="number" id="goalCarMileage" min="0" /><br>
+                        <br>
+                        <label>Goal for Public Transport Trips (count):</label>
+                        <input type="number" id="goalPublicTransport" min="0" /><br>
+                        <br>
+                        <label>Goal for Waste Generation (kg):</label>
+                        <input type="number" id="goalWaste" min="0" /><br>
+                        <br>
+                        <label>Goal for Plastic Usage (count):</label>
+                        <input type="number" id="goalPlastic" min="0" /><br>
+                        <br>
+                        <label>Goal for Meat Consumption (meals):</label>
+                        <input type="number" id="goalMeat" min="0" /><br>
+                        <br>
+                        <label>Goal for Paper Usage (sheets):</label>
+                        <input type="number" id="goalPaper" min="0" /><br>
+                        <br>
+                        <label>Goal for Heating/Cooling Usage (hours):</label>
+                        <input type="number" id="goalHeatingCooling" min="0" /><br>
+                        <br>
+                        <label>Goal for Food Waste (kg):</label>
+                        <input type="number" id="goalFoodWaste" min="0" /><br>
+                        <br>
+                        <button type="submit">Save Goals</button>
+                    </center>
+                </form>
+            </div>
+        </div>
+
+        <br>
+
+        <div id="box" style="align-content: center;">
+            <h2>Metric Graph</h2>
+            <label for="seriesSelect">Select Metric to Display:</label>
+            <select id="seriesSelect">
+                <option value="all">All</option>
+                <option value="electricity">Electricity</option>
+                <option value="water">Water</option>
+                <option value="carMileage">Car Mileage</option>
+                <option value="publicTransport">Public Transport</option>
+                <option value="waste">Waste</option>
+                <option value="plastic">Plastic</option>
+                <option value="meat">Meat</option>
+                <option value="paper">Paper</option>
+                <option value="heatingCooling">Heating/Cooling</option>
+                <option value="foodWaste">Food Waste</option>
+            </select><br>
+            <br>
+            <canvas id="combinedChart" width="600" height="400"></canvas>
+        </div>
+
+        <script src="tracker.js"></script>
+    </body>
+</html>

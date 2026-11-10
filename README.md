@@ -1,1 +1,56 @@
-# trishutrion.github.io
+# Eco-Solve 
+
+Hello, and welcome to Eco-Solve!<br/>
+Eco-Solve is an environmental education website where users can learn more about the environment and get the tools to make more sustainable choices.<br/>
+They can do this by watching videos, taking quizzes, playing games, and/or even setting their own personal goals.
+
+## Videos
+
+The videos section of Eco-Solve is where users can watch a carefully selected collection of YouTube videos about environmental issues that are both engaging and informative.<br/>
+This section also contains the award-winning film "Echoes of Humanity", a dystopian tale about an alien who finds the message of the last person alive on Earth. <br/> 
+This film was made by the creator(s) of Eco-Solve.
+
+## Quizzes
+If you wish to test yourself, the quizzes page of Eco-Solve is for you. <br/> 
+This page consists of quizzes that contain the most comprehensive questions addressing the VCE Environmental Science Study Design. <br/> 
+Source: `https://www.vcaa.vic.edu.au/curriculum/vce/vce-study-designs/environmentalscience/Pages/Index.aspx`
+
+## Games
+For all the pro hacker gamers out there, Eco-Solve's game page is your go-to.<br/>
+This page contains the legendary trilogy of the Eco-Quest games, which are exclusively found on Eco-Solve.<br/>
+### Eco-Quest: Part 1
+In this game, you have just discovered that aliens have invaded Earth, and are now planning to 
+The Eco-Quest saga is also made by the creator(s) of Eco-Solve.
+
+## Personal Tracker
+
+
+
+
+## Getting Started
+
+To get started with the Eco-Solve Online Interface, follow these steps:
+
+1. Clone the repository to your local machine.
+2. Install the required dependencies by running `npm install`.
+3. Start the development server by running `npm start`.
+4. Open your browser and navigate to `http://localhost:3000`.
+
+## Features
+
+The Eco-Solve Online Interface provides the following features:
+
+- User registration and login
+- Dashboard displaying active challenges
+- Challenge submission form
+- Leaderboard showcasing top contributors
+- Notifications for challenge updates
+
+## Contributing
+
+We welcome contributions from the community! If you would like to contribute to the Eco-Solve Online Interface, please follow our [contribution guidelines](CONTRIBUTING.md).
+
+## License
+
+This project is licensed under the [MIT License](LICENSE).
+

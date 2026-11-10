@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<!-- 
+    Eco-Solve: Game Page
+    Description: This page hosts the interactive Eco-Quest game, part of the Eco-Solve project aimed at educating users about environmental conservation through engaging gameplay. Players will navigate through various levels, solving puzzles and learning about sustainability and environmental protection.
+    Author: Arnav Bagal
+    Date: 2023
+-->
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Games</title>
+        <link rel="stylesheet"; href="styles.css">
+        <style>
+        </style>
+    </head>
+    <body>
+        <h1>Mini-Games</h1>
+        <h2>Knocked one, knocked one, knocked another! I'm pushing!</h2>
+        <div style="display: flex; justify-content: center;"><div id="navbar"><script src="navbar.js"></script></div></div>
+        <br>
+        <div id="box">
+            <script src="game.js"></script> 
+            <p>
+                <h2>Eco-Quest: Part 1</h2> 
+                <div id="ecoQuestPart1">
+                    <button onclick="startPart1()">Begin!</button> 
+                </div>                                                   
+            </p>
+        </div>
+        <br> 
+        <div id="box">
+            <p>
+                <h2>Eco-Quest: Part 2</h2>   
+                <div id="ecoQuestPart2">
+                    <p>
+                       <button onclick="startPart2()">Begin!</button> 
+                    </p>
+                </div>
+            </p>
+        </div>
+        <br>
+        <div id="box">
+            <script src="game.js"></script>
+            <p>
+                <h2>Eco-Quest: Part 3</h2>
+                <div id="ecoQuestPart3">
+                    <button onclick="startPart3()">Begin!</button> 
+                </div>               
+            </p>
+        </div>       
+    </body>
+</html>
